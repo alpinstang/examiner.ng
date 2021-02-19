@@ -22,9 +22,12 @@
     "v++": "yarn version --minor"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.4.0",
     "firebase": "^7.15.5",
     "next": "latest",
     "next-offline": "^5.0.2",
+    "nightwind": "^1.1.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-toastify": "^6.0.8",

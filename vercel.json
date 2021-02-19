@@ -1,7 +1,7 @@
 {
   "version": 2,
   "env": {
-    "NEXT_PUBLIC_APP_URL": "https://Examiner Testing.vercel.app/"
+    "NEXT_PUBLIC_APP_URL": "https://examiner-ng-oypvgijse.vercel.app/"
   },
   "rewrites": [
     {
