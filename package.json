@@ -1,8 +1,12 @@
 {
-  "name": "nextjs-pwa-firebase-boilerplate",
-  "description": "Next.js serverless PWA with Firebase and React Hooks",
-  "version": "1.13.0",
+  "name": "examiner-testing",
+  "description": "Examiner Test and Exam Preparation",
+  "version": "1.0.0",
   "author": "Tom Söderlund <tom@tomsoderlund.com>",
+  "contributors": [
+    "John McDonald <jcm.codes@gmail.com>",
+    "Olalekan Ileolagol <ileolagold.olalekan@gmail.com>"
+  ],
   "license": "ISC",
   "scripts": {
     "dev": "next dev -p 3004",
@@ -18,15 +22,18 @@
     "v++": "yarn version --minor"
   },
   "dependencies": {
-    "aether-css-framework": "latest",
     "firebase": "^7.15.5",
     "next": "latest",
     "next-offline": "^5.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-toastify": "^6.0.8"
+    "react-toastify": "^6.0.8",
+    "webpack": "^5.23.0"
   },
   "devDependencies": {
-    "standard": "^14.3.4"
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "standard": "^14.3.4",
+    "tailwindcss": "^2.0.3"
   }
 }
