@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "env":{
-    "NEXT_PUBLIC_APP_URL":"https://nextjs-pwa-firebase-boilerplate.vercel.app/"
+  "env": {
+    "NEXT_PUBLIC_APP_URL": "https://examiner-ng-oypvgijse.vercel.app/"
   },
   "rewrites": [
     {

@@ -1,16 +1,14 @@
 import React from "react";
 import Router from "next/router";
 import Link from "next/link";
-import "tailwindcss/tailwind.css";
-
+import "../styles/globals.css";
+import TopNav from "components/page/TopNav";
 // Import global CSS files here
 // import 'node_modules/aether-css-framework/dist/aether.min.css'
-import "../styles/globals.css";
 
 // import { config } from 'config/config'
 
 import PageHead from "components/page/PageHead";
-// import Header from 'components/page/Header'
 import Notifications from "components/page/Notifications";
 import { googlePageview } from "components/page/GoogleAnalytics";
 
@@ -23,13 +21,9 @@ const MyApp = ({ Component, pageProps, router }) => {
     <>
       <PageHead title={title} description={description} path={router.asPath} />
 
-      {/*
-      <Header
-        title={config.appName}
-      />
- */}
+      <TopNav />
 
-      <main>
+      <main className="container p-4 dark:bg-gray-900">
         <Component {...pageProps} {...router} />
       </main>
 

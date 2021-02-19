@@ -1,12 +1,12 @@
 # Next.js serverless PWA with Firebase and React Hooks
 
-![nextjs-pwa-firebase-boilerplate demo on phone](docs/github_preview.jpg)
+![Examiner Testing demo on phone](docs/github_preview.jpg)
 
 _Note: this is my v4 boilerplate for React web apps. See also my [GraphQL + Postgres SQL boilerplate](https://github.com/tomsoderlund/nextjs-pwa-graphql-sql-boilerplate), [Redux + REST + Postgres SQL boilerplate](https://github.com/tomsoderlund/nextjs-sql-rest-api-boilerplate) and [REST + MongoDB boilerplate](https://github.com/tomsoderlund/nextjs-express-mongoose-crudify-boilerplate)._
 
 ## Support this project
 
-Did you or your company find `nextjs-pwa-firebase-boilerplate` useful? Please consider giving a small donation, it helps me spend more time on open-source projects:
+Did you or your company find `Examiner Testing` useful? Please consider giving a small donation, it helps me spend more time on open-source projects:
 
 [![Support Tom on Ko-Fi.com](https://www.tomsoderlund.com/ko-fi_tomsoderlund_50.png)](https://ko-fi.com/tomsoderlund)
 
@@ -15,34 +15,34 @@ Did you or your company find `nextjs-pwa-firebase-boilerplate` useful? Please co
 This is a great template for a any project where you want **React (with Hooks)** (with server-side rendering, powered by [Next.js](https://github.com/zeit/next.js)) as frontend and **Firebase** as backend.
 _Lightning fast, all JavaScript._
 
-* Great starting point for a [PWA (Progressive Web App)](https://en.wikipedia.org/wiki/Progressive_web_applications), which you can add to your Home Screen and use as a full-screen app.
-* PWA features such as `manifest.json` and offline support (`next-offline`).
-* Can be deployed as [serverless functions on Vercel/Zeit Now](#deploying).
-* The new Firebase [Firestore](https://firebase.google.com/docs/firestore) database.
-* Login/Signup with Firebase Authentication.
-* React Hooks for business logic.
-* Free-form database model. No GraphQL or REST API, just add React Hooks and modify `[page].getServerSideProps` (for server-side rendering, SSR) when changing/adding database tables.
-* Easy to style the visual theme using CSS (e.g. using [Design Profile Generator](https://tomsoderlund.github.io/design-profile-generator/)).
-* SEO support with `sitemap.xml` and `robots.txt`.
-* Google Analytics and `google-site-verification` support (see `config/config.js`).
-* Flexible configuration with `config/config.js` and `.env.local` file.
-* Code linting and formatting with StandardJS (`yarn lint`/`yarn fix`).
-* Unit testing with Jasmine (`yarn unit`, not yet included).
-* Great page speed, see [Lighthouse](https://developers.google.com/web/tools/lighthouse) score:
+- Great starting point for a [PWA (Progressive Web App)](https://en.wikipedia.org/wiki/Progressive_web_applications), which you can add to your Home Screen and use as a full-screen app.
+- PWA features such as `manifest.json` and offline support (`next-offline`).
+- Can be deployed as [serverless functions on Vercel/Zeit Now](#deploying).
+- The new Firebase [Firestore](https://firebase.google.com/docs/firestore) database.
+- Login/Signup with Firebase Authentication.
+- React Hooks for business logic.
+- Free-form database model. No GraphQL or REST API, just add React Hooks and modify `[page].getServerSideProps` (for server-side rendering, SSR) when changing/adding database tables.
+- Easy to style the visual theme using CSS (e.g. using [Design Profile Generator](https://tomsoderlund.github.io/design-profile-generator/)).
+- SEO support with `sitemap.xml` and `robots.txt`.
+- Google Analytics and `google-site-verification` support (see `config/config.js`).
+- Flexible configuration with `config/config.js` and `.env.local` file.
+- Code linting and formatting with StandardJS (`yarn lint`/`yarn fix`).
+- Unit testing with Jasmine (`yarn unit`, not yet included).
+- Great page speed, see [Lighthouse](https://developers.google.com/web/tools/lighthouse) score:
 
 ![Lighthouse score](docs/lighthouse_score.png)
 
 ## Demo
 
-See [**nextjs-pwa-firebase-boilerplate** running on Vercel here](https://nextjs-pwa-firebase-boilerplate.vercel.app/).
+See [**Examiner Testing** running on Vercel here](https://Examiner Testing.vercel.app/).
 
-![nextjs-pwa-firebase-boilerplate demo on phone](docs/demo.jpg)
+![Examiner Testing demo on phone](docs/demo.jpg)
 
 ## Deploying
 
 Setup and deploy your own project using this template with [Vercel](https://vercel.com). All you'll need is your Firebase Public API Key.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Ftomsoderlund%2Fnextjs-pwa-firebase-boilerplate&env=NEXT_PUBLIC_FIREBASE_API_KEY&envDescription=Enter%20your%20public%20Firebase%20API%20Key&envLink=https://github.com/tomsoderlund/nextjs-pwa-firebase-boilerplate#deploying-with-vercel)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Ftomsoderlund%2FExaminer Testing&env=NEXT_PUBLIC_FIREBASE_API_KEY&envDescription=Enter%20your%20public%20Firebase%20API%20Key&envLink=https://github.com/tomsoderlund/Examiner Testing#deploying-with-vercel)
 
 ## How to use
 
@@ -50,7 +50,7 @@ Setup and deploy your own project using this template with [Vercel](https://verc
 
 Clone this repository:
 
-    git clone https://github.com/tomsoderlund/nextjs-pwa-firebase-boilerplate.git [MY_APP]
+    git clone https://github.com/tomsoderlund/Examiner Testing.git [MY_APP]
 
 Remove the .git folder since you want to create a new repository
 
@@ -82,7 +82,7 @@ If you navigate to `http://localhost:3004/` you will see a web page with a list 
 
 ### Change app name
 
-Do search/replace for “nextjs-pwa-firebase-boilerplate” to something else.
+Do search/replace for “Examiner Testing” to something else.
 
 Change name in `public/manifest.json`
 
