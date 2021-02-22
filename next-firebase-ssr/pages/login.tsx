@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { firebaseClient } from "../firebaseClient";
+import { firebaseAdmin } from "../firebaseAdmin";
 
 const Login: any = (_props: any) => {
   const [email, setEmail] = useState("");
@@ -29,7 +30,8 @@ const Login: any = (_props: any) => {
         onClick={async () => {
           await firebaseClient
             .auth()
-            .createUserWithEmailAndPassword(email, pass);
+            .createUserWithEmailAndPassword(email, pass)
+            .then(createProfile);
           router.push("/");
         }}
       >
@@ -48,3 +50,17 @@ const Login: any = (_props: any) => {
 };
 
 export default Login;
+
+const createProfile = (userRecord: any) => {
+  console.log("Create User Profile");
+  console.log(userRecord);
+
+  const db = firebaseAdmin.firestore();
+  const { email, phoneNumber, uid } = userRecord;
+
+  return db
+    .collection("Users")
+    .doc(uid)
+    .set({ email, phoneNumber })
+    .catch(console.error);
+};
