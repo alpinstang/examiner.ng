@@ -120,7 +120,7 @@ export const examSchema: EntitySchema = buildSchema({
 		},
 	},
 	defaultValues: {
-		currency: "USD",
+		currency: "DOL",
 	},
 	onPreDelete: () => {
 		throw Error("Exam deletion not allowed!");

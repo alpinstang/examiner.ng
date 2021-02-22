@@ -137,8 +137,8 @@ function App() {
 		name: "Exams",
 		group: "Testing",
 		subcollections: [questionCollection],
-		excludedProperties: ["images", "related_products"],
-		filterableProperties: ["price", "available_locales"],
+		excludedProperties: ["images", "available", "questions", "uppercase_name"],
+		filterableProperties: ["price", "category"],
 	});
 
 	const navigation: EntityCollection[] = [
@@ -154,11 +154,11 @@ function App() {
 			user?.email === "jcm.codes@gmail.com" ||
 			user?.email === "ileolagold.olalekan@gmail.com"
 		) {
-			console.log("Allowing access to", user?.email);
+			console.log("Allowing access to ", user?.email);
 			return true;
 		}
 		// Otherwise deny access
-		console.log("not authorized");
+		console.log("Not Authorized.");
 		return false;
 	};
 
