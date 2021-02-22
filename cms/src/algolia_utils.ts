@@ -19,4 +19,4 @@ export const usersSearchDelegate = client && new AlgoliaTextSearchDelegate(
     "users");
 export const blogSearchDelegate = client && new AlgoliaTextSearchDelegate(
     client,
-    "blog");
+    "exams");
