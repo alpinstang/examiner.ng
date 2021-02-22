@@ -1,5 +1,6 @@
 import firebaseClient from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 /*
 
@@ -28,6 +29,7 @@ if (typeof window !== "undefined" && !firebaseClient.apps.length) {
     .auth()
     .setPersistence(firebaseClient.auth.Auth.Persistence.SESSION);
   (window as any).firebase = firebaseClient;
+  firebaseClient.firestore();
 }
 
 export { firebaseClient };

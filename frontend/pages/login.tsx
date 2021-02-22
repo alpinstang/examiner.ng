@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { firebaseClient } from "../firebaseClient";
-import { firebaseAdmin } from "../firebaseAdmin";
+import createProfile from "../userStore";
 
 const Login: any = (_props: any) => {
   const [email, setEmail] = useState("");
@@ -31,7 +31,10 @@ const Login: any = (_props: any) => {
           await firebaseClient
             .auth()
             .createUserWithEmailAndPassword(email, pass)
-            .then(createProfile);
+            .then((res) => {
+              console.log(res);
+              createProfile(res);
+            });
           router.push("/");
         }}
       >
@@ -39,7 +42,13 @@ const Login: any = (_props: any) => {
       </button>
       <button
         onClick={async () => {
-          await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
+          await firebaseClient
+            .auth()
+            .signInWithEmailAndPassword(email, pass)
+            .then((res) => {
+              console.log(res);
+              createProfile(res);
+            });
           router.push("/");
         }}
       >
@@ -50,17 +59,3 @@ const Login: any = (_props: any) => {
 };
 
 export default Login;
-
-const createProfile = (userRecord: any) => {
-  console.log("Create User Profile");
-  console.log(userRecord);
-
-  const db = firebaseAdmin.firestore();
-  const { email, phoneNumber, uid } = userRecord;
-
-  return db
-    .collection("Users")
-    .doc(uid)
-    .set({ email, phoneNumber })
-    .catch(console.error);
-};
