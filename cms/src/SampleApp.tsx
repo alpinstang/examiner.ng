@@ -16,8 +16,6 @@ import {
 	SchemaResolver,
 } from "@camberi/firecms";
 import firebase from "firebase";
-import { IconButton, Tooltip } from "@material-ui/core";
-import { GitHub } from "@material-ui/icons";
 
 import { firebaseConfig } from "./firebase_config";
 import { ExampleAdditionalView } from "./ExampleAdditionalView";
@@ -25,7 +23,7 @@ import { SampleExtraActions } from "./SampleExtraActions";
 import PriceTextPreview from "./custom_preview/PriceTextPreview";
 import CustomColorTextField from "./custom_field/CustomColorTextField";
 import CustomBooleanPreview from "./custom_preview/CustomBooleanPreview";
-import logo from "./images/test_shop_logo.png";
+import logo from "./images/logo.png";
 import {
 	blogSearchDelegate,
 	productsSearchDelegate,

@@ -13,7 +13,6 @@ import {
 import firebase from "firebase";
 
 import { firebaseConfig } from "./firebase_config";
-import { ExampleAdditionalView } from "./ExampleAdditionalView";
 import { SampleExtraActions } from "./SampleExtraActions";
 import logo from "./images/logo.png";
 import {
@@ -99,21 +98,7 @@ function App() {
 		name: "Users",
 		group: "Testing",
 		textSearchDelegate: usersSearchDelegate,
-		additionalColumns: [
-			{
-				id: "sample_additional",
-				title: "Sample additional",
-				builder: () => "Content of a generated column",
-			},
-		],
-		properties: [
-			"first_name",
-			"last_name",
-			"email",
-			"phone",
-			"sample_additional",
-			"picture",
-		],
+		properties: ["first_name", "last_name", "email", "phone", "picture"],
 	});
 
 	const blogCollection = buildCollection({
@@ -164,8 +149,17 @@ function App() {
 	];
 
 	const myAuthenticator: Authenticator = (user?: firebase.User) => {
-		console.log("Allowing access to", user?.email);
-		return true;
+		// Check if the user is someone we want to manage CMS
+		if (
+			user?.email === "jcm.codes@gmail.com" ||
+			user?.email === "ileolagold.olalekan@gmail.com"
+		) {
+			console.log("Allowing access to", user?.email);
+			return true;
+		}
+		// Otherwise deny access
+		console.log("not authorized");
+		return false;
 	};
 
 	const customSchemaResolver: SchemaResolver = ({
@@ -202,11 +196,13 @@ function App() {
 		<CMSApp
 			name={"Examiner CMS"}
 			authentication={myAuthenticator}
-			signInOptions={[
-				firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-				firebase.auth.EmailAuthProvider.PROVIDER_ID,
-			]}
-			allowSkipLogin={true}
+			// signInOptions={[
+			// 	firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+			// 	firebase.auth.EmailAuthProvider.PROVIDER_ID,
+			// ]}
+			primaryColor="#047857"
+			secondaryColor="#ffd000"
+			allowSkipLogin={false}
 			logo={logo}
 			navigation={navigation}
 			schemaResolver={customSchemaResolver}
