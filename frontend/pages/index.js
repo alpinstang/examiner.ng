@@ -1,24 +1,7 @@
-import Fork from '../components/Fork'
-import Todo from '../components/Todo'
-
-export default function Index({ stars }) {
+export default function Index() {
 	return (
 		<>
-			<Fork stars={stars} />
-			<Todo />
+			<h1>Hello</h1>
 		</>
-	)
-}
-
-export async function getServerSideProps() {
-	const res = await fetch(
-		'https://api.github.com/repos/ooade/NextSimpleStarter'
-	)
-	const json = await res.json()
-
-	return {
-		props: {
-			stars: json.stargazers_count,
-		},
-	}
+	);
 }

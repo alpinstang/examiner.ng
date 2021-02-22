@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 // import ThemeToggle from "./themeToggle";
 
-import { config } from "config/config";
+import { config } from "../config/config";
 import ToggleNightMode from "./ToggleNightMode";
 
 const NavigationBar = ({ title = config.appName, children }) => (
