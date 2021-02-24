@@ -8,7 +8,7 @@ const DashBoardPage: React.FC = () => {
   if (!auth.user) return null;
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto my-12">
         <div className="w-full">
           <h2 className="my-6 text-center text-3xl font-bold text-gray-900">
             {`Welcome ${auth.user.first_name}!`}

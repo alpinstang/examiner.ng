@@ -113,10 +113,11 @@ const useAuthProvider = () => {
       .collection("users")
       .doc(user.uid)
       .set(user)
-      .then((userData: any) => {
-        if (userData.data()) {
-          setUser(userData.data());
-        }
+      .then((res: any) => {
+        Notify.Success("Profile Updated");
+      })
+      .catch((error) => {
+        Notify.Failure(error.message);
       });
   };
 

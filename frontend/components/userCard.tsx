@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
+
 interface UserData {
   user: {
     first_name: string;
@@ -9,8 +12,24 @@ interface UserData {
 }
 
 const UserCard = (props: UserData) => {
+  const auth = useAuth();
+  if (!auth.user) return null;
+
   const { first_name, last_name, phone, email, uid } = props.user;
   console.log(props);
+
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState(props.user.phone);
+
+  const handleClick = () => {
+    if (editing && value !== phone) {
+      let user = props.user;
+      user.phone = value;
+      console.log(user);
+      auth.updateUserData(user);
+    }
+    setEditing(!editing);
+  };
 
   return (
     <div className=" max-w-md mx-auto overflow-hidden bg-examiner-50 rounded-lg shadow-lg dark:bg-gray-800 p-4">
@@ -20,25 +39,8 @@ const UserCard = (props: UserData) => {
         alt="avatar"
       />
 
-      {/* <div className="flex items-center px-6 py-3 bg-gray-900">
-        <svg
-          className="w-6 h-6 text-white fill-current"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M17 21C15.8954 21 15 20.1046 15 19V15C15 13.8954 15.8954 13 17 13H19V12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12V13H7C8.10457 13 9 13.8954 9 15V19C9 20.1046 8.10457 21 7 21H3V12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12V21H17ZM19 15H17V19H19V15ZM7 15H5V19H7V15Z"
-          />
-        </svg>
-
-        <h1 className="mx-3 text-lg font-semibold text-white">Focusing</h1>
-      </div> */}
-
       <div className="px-6 py-4">
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+        <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
           {first_name || "First Name"} {last_name || "Last Name"}
         </h1>
 
@@ -59,7 +61,7 @@ const UserCard = (props: UserData) => {
             </svg>
           </div>
 
-          <h1 className="px-2 text-sm">{email || "Email"}</h1>
+          <h1 className="px-2 text-lg">{email || "Email"}</h1>
         </div>
 
         <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
@@ -79,7 +81,24 @@ const UserCard = (props: UserData) => {
               />
             </svg>
           </div>
-          <h1 className="px-2 text-sm">{phone || "Phone"}</h1>
+          {editing ? (
+            <input
+              onChange={(e) => setValue(e.target.value)}
+              value={value}
+              type="tel"
+              className=" m-0 w-40 border-gray-400 border-2"
+            />
+          ) : (
+            <h1 className="px-2 text-lg">{phone || "Phone"}</h1>
+          )}
+        </div>
+        <div className="mt-6">
+          <button
+            onClick={handleClick}
+            className="float-right px-4 py-2 bg-examiner-400 text-lg font-bold rounded-lg"
+          >
+            {editing ? "Save" : "Edit"}
+          </button>
         </div>
       </div>
     </div>
