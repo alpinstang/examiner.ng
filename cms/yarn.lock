@@ -2308,6 +2308,13 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
+"@types/papaparse@^5.0.4":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@types/papaparse/-/papaparse-5.2.5.tgz#9d3cd9d932eb0dccda9e3f73f39996c4da3fa628"
+  integrity sha512-TlqGskBad6skAgx2ifQmkO/FwiwObuWltBvX2bDceQhXh9IyZ7jYCK7qwhjB67kxw+0LJDXXM4jN3lcGqm1g5w==
+  dependencies:
+    "@types/node" "*"
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
@@ -4513,6 +4520,31 @@ csstype@^3.0.2:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.5.tgz#7fdec6a28a67ae18647c51668a9ff95bb2fa7bb8"
   integrity sha512-uVDi8LpBUKQj6sdxNaTetL6FpeCqTjOvAQuQUa/qAqq8oOd4ivkbhgnqayl0dnPal8Tb/yB1tF+gOvCBiicaiQ==
+
+csv-generate@^3.2.4:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/csv-generate/-/csv-generate-3.3.0.tgz#0e25658f1bb9806d94fec7b270896a35c7eedf1a"
+  integrity sha512-EXSru4QwEWKwM7wwsJbhrZC+mHEJrhQFoXlohHs80CAU8Qhlv9gaw1sjzNiC3Hr3oUx5skDmEiAlz+tnKWV0RA==
+
+csv-parse@^4.8.8:
+  version "4.15.3"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.15.3.tgz#8a62759617a920c328cb31c351b05053b8f92b10"
+  integrity sha512-jlTqDvLdHnYMSr08ynNfk4IAUSJgJjTKy2U5CQBSu4cN9vQOJonLVZP4Qo4gKKrIgIQ5dr07UwOJdi+lRqT12w==
+
+csv-stringify@^5.3.6:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-5.6.2.tgz#e653783e2189c4c797fbb12abf7f4943c787caa9"
+  integrity sha512-n3rIVbX6ylm1YsX2NEug9IaPV8xRnT+9/NNZbrA/bcHgOSSeqtWla6XnI/xmyu57wIw+ASCAoX1oM6EZtqJV0A==
+
+csv@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/csv/-/csv-5.3.2.tgz#50b344e25dfbb8c62684a1bcec18c22468b2161e"
+  integrity sha512-odDyucr9OgJTdGM2wrMbJXbOkJx3nnUX3Pt8SFOwlAMOpsUQlz1dywvLMXJWX/4Ib0rjfOsaawuuwfI5ucqBGQ==
+  dependencies:
+    csv-generate "^3.2.4"
+    csv-parse "^4.8.8"
+    csv-stringify "^5.3.6"
+    stream-transform "^2.0.1"
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -8462,6 +8494,11 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
+mixme@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mixme/-/mixme-0.4.0.tgz#a1aee27f0d63cc905e1cc6ddc98abf94d414435e"
+  integrity sha512-B4Sm1CDC5+ov5AYxSkyeT5HLtiDgNOLKwFlq34wr8E2O3zRdTvQiLzo599Jt9cir6VJrSenOlgvdooVYCQJIYw==
+
 mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
@@ -9010,6 +9047,11 @@ pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
+
+papaparse@^5.2.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.3.0.tgz#ab1702feb96e79ab4309652f36db9536563ad05a"
+  integrity sha512-Lb7jN/4bTpiuGPrYy4tkKoUS8sTki8zacB5ke1p5zolhcSE4TlWgrlsxjrDTbG/dFVh07ck7X36hUf/b5V68pg==
 
 parallel-transform@^1.1.0:
   version "1.2.0"
@@ -10306,7 +10348,7 @@ react-dom@^17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
-react-dropzone@^11.2.0:
+react-dropzone@^11.2.0, react-dropzone@^11.3.1:
   version "11.3.1"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-11.3.1.tgz#a3115e728b32b33e89f03d691b5b3b44b7f9072f"
   integrity sha512-gPyw524T6dYZW81aQoBGmBG90cVNs+YJreh3HaN45Yw09Bm6m4aA6IF9ergHZQAWGeDSJ+DUhDKKAAaDdTj3RQ==
@@ -10360,6 +10402,14 @@ react-measure@^2.5.2:
     get-node-dimensions "^1.2.1"
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
+
+react-papaparse@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/react-papaparse/-/react-papaparse-3.11.1.tgz#fddcd9b5b5cf0ac84f990959b8d1071d8a5f83d9"
+  integrity sha512-/TGscChB9rtaqKbQOWXpGQ+hFf+6EWxV5iRi1V1tCf0WW+dT4oy961QpdPUDZNcUakEXdkuRzdi+z8yNTRGCQQ==
+  dependencies:
+    "@types/papaparse" "^5.0.4"
+    papaparse "^5.2.0"
 
 react-refresh@^0.8.3:
   version "0.8.3"
@@ -11527,6 +11577,13 @@ stream-shift@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/stream-shift/-/stream-shift-1.0.1.tgz#d7088281559ab2778424279b0877da3c392d5a3d"
   integrity sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ==
+
+stream-transform@^2.0.1:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/stream-transform/-/stream-transform-2.0.4.tgz#911ff7556d1e25c237e95d783f6739d9e0b4a61c"
+  integrity sha512-LQXH1pUksoef5Ijo6+2ihnjLLZtZuoqu1vhut6a7xZ77nrLA/shbbx2FAzVC/nkb6wwrPzOO98700mv4HDQcWg==
+  dependencies:
+    mixme "^0.4.0"
 
 strict-uri-encode@^1.0.0:
   version "1.1.0"

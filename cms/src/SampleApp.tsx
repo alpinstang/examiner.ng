@@ -18,7 +18,7 @@ import {
 import firebase from "firebase";
 
 import { firebaseConfig } from "./firebase_config";
-import { ExampleAdditionalView } from "./ExampleAdditionalView";
+import { UploadQuestionsView } from "./FileUploadView";
 import { SampleExtraActions } from "./SampleExtraActions";
 import PriceTextPreview from "./custom_preview/PriceTextPreview";
 import CustomColorTextField from "./custom_field/CustomColorTextField";
@@ -786,7 +786,7 @@ function SampleApp() {
 			path: "additional",
 			name: "Additional",
 			group: "Content",
-			view: <ExampleAdditionalView />,
+			view: <UploadQuestionsView />,
 		},
 	];
 

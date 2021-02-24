@@ -30,6 +30,7 @@ import { usersSchema } from "./schemas/user/usersSchema";
 
 import { examSchema } from "./schemas/exam/examSchema";
 import { questionSchema } from "./schemas/exam/questionSchema";
+import { UploadQuestionsView } from "./FileUploadView";
 
 function App() {
 	productSchema.onPreSave = ({
@@ -148,6 +149,15 @@ function App() {
 		blogCollection,
 	];
 
+	const additionalViews: AdditionalView[] = [
+		{
+			path: "additional",
+			name: "Additional",
+			group: "Content",
+			view: <UploadQuestionsView />,
+		},
+	];
+
 	const myAuthenticator: Authenticator = (user?: firebase.User) => {
 		// Check if the user is someone we want to manage CMS
 		if (
@@ -205,6 +215,7 @@ function App() {
 			allowSkipLogin={false}
 			logo={logo}
 			navigation={navigation}
+			additionalViews={additionalViews}
 			schemaResolver={customSchemaResolver}
 			// In the production environment, the configuration is fetched from the environment automatically
 			firebaseConfig={firebaseConfig}
