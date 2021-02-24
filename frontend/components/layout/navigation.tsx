@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const Navigation = () => {
+export default function IndexPage() {
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
+    console.log("click", active);
     setActive(!active);
+    return active;
   };
 
   return (
-    <>
-      <nav className="flex items-center flex-wrap gradient p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow shadow-gray-800">
+    <div className="fixed w-full bg-examiner-800 p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow shadow-gray-800">
+      <nav className="container flex items-center flex-wrap mx-auto">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4 ">
             <svg
@@ -26,7 +28,8 @@ const Navigation = () => {
           </a>
         </Link>
         <button
-          className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
+          type="button"
+          className=" inline-flex p-3 hover:bg-examiner-900 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
           onClick={handleClick}
         >
           <svg
@@ -47,7 +50,7 @@ const Navigation = () => {
         {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
         <div
           className={`${
-            active ? "" : "hidden"
+            active ? "block" : "hidden"
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
@@ -74,8 +77,6 @@ const Navigation = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
-};
-
-export default Navigation;
+}

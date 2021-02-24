@@ -1,9 +1,9 @@
 import React from "react";
-import { LearningSVG } from "./LearningSVG";
+import { LearningSVG } from "./svg/learning.svg";
 
 const Hero = () => {
   return (
-    <div className="gradient text-white">
+    <div className="gradient text-white p-8 mb-4">
       <div className="pt-24">
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
@@ -22,13 +22,13 @@ const Hero = () => {
             </button>
           </div>
           <div className="w-full md:w-3/5 py-6 text-center">
-            <div className="w-full max-w-3xl">
+            <div className="w-full max-w-4xl">
               <LearningSVG />
             </div>
           </div>
         </div>
       </div>
-      <div className="relative -mt-12 lg:-mt-24">
+      {/* <div className="relative -mt-12 lg:-mt-24">
         <svg
           viewBox="0 0 1428 174"
           version="1.1"
@@ -63,7 +63,7 @@ const Hero = () => {
             </g>
           </g>
         </svg>
-      </div>
+      </div> */}
     </div>
   );
 };

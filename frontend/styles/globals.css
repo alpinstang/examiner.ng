@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 .gradient {
-  background: linear-gradient(90deg, #008753 0%, #008753 33%, #003f87 100%);
+  background: rgb(2, 62, 138);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 62, 138, 1) 0%,
+    rgba(72, 202, 228, 1) 100%
+  );
+}
+
+.gradient-radial {
+  background: #023e8aff;
+  background: radial-gradient(circle, rgb(2, 62, 138) 0%, rgb(0, 80, 185) 100%);
 }
