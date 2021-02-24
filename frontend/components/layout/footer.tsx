@@ -3,12 +3,12 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white">
-        <div className="container mx-auto px-8">
+      <footer className="bg-white z-50 relative">
+        <div className="container mx-auto px-8 bg-white">
           <div className="w-full flex flex-col md:flex-row py-6">
             <div className="flex-1 mb-6 text-black">
               <a
-                className="text-examiner-700 no-underline hover:no-underline font-bold text-xl lg:text-3xl"
+                className="text-examiner-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
                 href="#"
               >
                 EXAMINER.NG
@@ -124,8 +124,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto">
-          <p>&copy; {currentYear} Examiner.ng | All Rights Reserved</p>
+        <div className="bg-examiner-700 text-white">
+          <div className="container mx-auto text-center py-8">
+            <p>&copy; {currentYear} Examiner.ng | All Rights Reserved</p>
+          </div>
         </div>
       </footer>
     </>

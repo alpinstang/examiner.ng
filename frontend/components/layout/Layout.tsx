@@ -5,6 +5,7 @@ const Layout: React.FC = (props) => {
   return (
     <>
       <Navigation />
+      <div className="h-20"></div>
       {props.children}
       <Footer />
     </>

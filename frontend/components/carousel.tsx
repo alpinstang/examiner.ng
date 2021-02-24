@@ -9,11 +9,11 @@ const Carousel: React.FC = () => {
           id="carousel-1"
           name="carousel"
           aria-hidden="true"
-          hidden={false}
-          checked={true}
+          hidden={true}
+          defaultChecked={true}
         />
-        <div className="carousel-item absolute opacity-0" style="height:50vh;">
-          <div className="block h-full w-full bg-indigo-500 text-white text-5xl text-center">
+        <div className="carousel-item absolute opacity-0 h-half">
+          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
             Slide 1
           </div>
         </div>
@@ -37,10 +37,11 @@ const Carousel: React.FC = () => {
           id="carousel-2"
           name="carousel"
           aria-hidden="true"
-          hidden={false}
+          hidden={true}
+          defaultChecked={true}
         />
-        <div className="carousel-item absolute opacity-0" style="height:50vh;">
-          <div className="block h-full w-full bg-orange-500 text-white text-5xl text-center">
+        <div className="carousel-item absolute opacity-0 h-half">
+          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
             Slide 2
           </div>
         </div>
@@ -64,10 +65,11 @@ const Carousel: React.FC = () => {
           id="carousel-3"
           name="carousel"
           aria-hidden="true"
-          hidden={false}
+          hidden={true}
+          defaultChecked={true}
         />
-        <div className="carousel-item absolute opacity-0" style="height:50vh;">
-          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center">
+        <div className="carousel-item absolute opacity-0 h-half">
+          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
             Slide 3
           </div>
         </div>

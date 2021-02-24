@@ -11,7 +11,7 @@ export default function IndexPage() {
   };
 
   return (
-    <div className="fixed w-full bg-examiner-800 p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow shadow-gray-800">
+    <div className="fixed z-50 h-20 w-full bg-examiner-800 p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow shadow-gray-800">
       <nav className="container flex items-center flex-wrap mx-auto">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4 ">

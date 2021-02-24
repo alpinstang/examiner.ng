@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        half: "50vh",
+      },
       colors: {
         nigeria: "#008753",
         examiner: {
