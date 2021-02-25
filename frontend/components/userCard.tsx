@@ -15,7 +15,7 @@ const UserCard = (props: UserData) => {
   const auth = useAuth();
   if (!auth.user) return null;
 
-  const { first_name, last_name, phone, email, uid } = props.user;
+  const { first_name, last_name, phone, email } = props.user;
   console.log(props);
 
   const [editing, setEditing] = useState(false);
