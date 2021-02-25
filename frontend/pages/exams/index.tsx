@@ -1,3 +1,5 @@
+import ExamCard from "../../components/examCard";
+
 const Exams = () => {
   return (
     <div className="flex flex-wrap -mx-2 overflow-hidden">
@@ -6,7 +8,7 @@ const Exams = () => {
       </div>
 
       <div className="my-2 px-2 w-full overflow-hidden lg:w-1/3 xl:w-1/3">
-        Test 2
+        <ExamCard />
       </div>
 
       <div className="my-2 px-2 w-full overflow-hidden lg:w-1/3 xl:w-1/3">
