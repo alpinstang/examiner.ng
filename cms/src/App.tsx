@@ -139,7 +139,7 @@ function App() {
     name: "Exams",
     group: "Testing",
     subcollections: [questionCollection],
-    excludedProperties: ["images", "available", "questions", "uppercase_name"],
+    excludedProperties: ["images", "questions", "uppercase_name"],
     filterableProperties: ["price", "category"],
   });
 
