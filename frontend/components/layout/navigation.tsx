@@ -1,8 +1,12 @@
 import Link from "next/link";
+import React from "react";
 import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
+import DropdownNav from "./dropdown";
 
 export default function IndexPage() {
   const [active, setActive] = useState(false);
+  const auth = useAuth();
 
   const handleClick = () => {
     console.log("click", active);
@@ -11,7 +15,7 @@ export default function IndexPage() {
   };
 
   return (
-    <div className="fixed z-50 h-20 w-full bg-examiner-800 p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow shadow-gray-800">
+    <div className="fixed z-50 h-20 w-full bg-examiner-800 p-3 border-t-0 border-l-0 border-r-0 border-b border-gray-800 shadow-lg shadow-gray-800">
       <nav className="container flex items-center flex-wrap mx-auto">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4 ">
@@ -59,21 +63,25 @@ export default function IndexPage() {
                 Store
               </a>
             </Link>
-            <Link href="/exams-list">
+            <Link href="/exams">
               <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
                 Exams List
               </a>
             </Link>
-            <Link href="/about">
-              <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
-                About
-              </a>
-            </Link>
-            <Link href="/user/dashboard">
-              <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
-                Profile
-              </a>
-            </Link>
+            <DropdownNav />
+            {!auth.user ? (
+              <Link href="/login">
+                <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
+                  Log In
+                </a>
+              </Link>
+            ) : (
+              <Link href="/user/dashboard">
+                <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
+                  Profile
+                </a>
+              </Link>
+            )}
           </div>
         </div>
       </nav>
