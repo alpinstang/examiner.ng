@@ -18,7 +18,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const app = firebase.app();
+// const app = firebase.app();
 const auth = firebase.auth();
 const db = firebase.firestore();
 const now = firebase.firestore.Timestamp.now();

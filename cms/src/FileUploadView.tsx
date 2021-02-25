@@ -68,6 +68,7 @@ export const UploadQuestionsView = () => {
       parsedData.forEach((line: any) => {
         createRecord(line, examId);
       });
+      logging("completed.");
     } else {
       snackbarController.open({
         type: "warning",
@@ -83,12 +84,13 @@ export const UploadQuestionsView = () => {
     console.log("fields: ", fields);
     console.log(fields["S/N"]);
     try {
-      // await db
-      //   .collection("exams")
-      //   .doc(examId)
-      //   .collection("questions")
-      //   .doc(data)
-      //   .set(data);
+      await db
+        .collection("exams")
+        .doc(examId)
+        .collection("questions")
+        .doc(fields["S/N"])
+        .set(fields);
+      logging("added row...");
     } catch (error) {
       logging(error.message);
       return { error };
