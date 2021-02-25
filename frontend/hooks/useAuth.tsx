@@ -114,6 +114,7 @@ const useAuthProvider = () => {
       .doc(user.uid)
       .set(user)
       .then((res: any) => {
+        console.log(res);
         Notify.Success("Profile Updated");
       })
       .catch((error) => {
