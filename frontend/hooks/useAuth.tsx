@@ -70,7 +70,13 @@ const useAuthProvider = () => {
       });
   };
 
-  const signUp = ({ first_name, last_name, email, password }: SignUpData) => {
+  const signUp = ({
+    first_name,
+    last_name,
+    phone,
+    email,
+    password,
+  }: SignUpData) => {
     return auth
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
@@ -102,6 +108,19 @@ const useAuthProvider = () => {
       });
   };
 
+  const updateUserData = (user: firebase.default.User) => {
+    return db
+      .collection("users")
+      .doc(user.uid)
+      .set(user)
+      .then((res: any) => {
+        Notify.Success("Profile Updated");
+      })
+      .catch((error) => {
+        Notify.Failure(error.message);
+      });
+  };
+
   const handleAuthStateChanged = (user: any) => {
     setUser(user);
     if (user) {
@@ -120,5 +139,6 @@ const useAuthProvider = () => {
     signUp,
     signIn,
     getUserAdditionalData,
+    updateUserData,
   };
 };

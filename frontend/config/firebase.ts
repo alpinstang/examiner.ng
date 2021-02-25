@@ -26,4 +26,15 @@ const storage = firebase.storage();
 
 export { auth, db, now, storage };
 
-console.log(app.name ? "Firebase Mode Activated!" : "Firebase not working :(");
+//console.log(app.name ? "Firebase Mode Activated!" : "Firebase not working :(");
+var styleArray = [
+  'background-image:    url("http://www.threadbombing.com/data/media/2/EsvcgzrXEAM-G2X.gif")',
+  "background-size: cover",
+  "color: red",
+  "padding: 10px 20px",
+  "line-height: 55px",
+  "width : 70px",
+  "height : 70px",
+  "border : 5px solid black",
+];
+console.log("%cBuy DogeCoin", styleArray.join(";"));

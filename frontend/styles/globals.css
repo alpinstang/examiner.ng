@@ -3,5 +3,63 @@
 @tailwind utilities;
 
 .gradient {
-  background: linear-gradient(90deg, #008753 0%, #008753 33%, #003f87 100%);
+  background: #1b4332ff;
+  background: linear-gradient(90deg, #081c15ff 20%, #74c69dff 100%);
+}
+
+.gradient-radial {
+  background: #2d6a4fff;
+  background: radial-gradient(circle, #1b4332ff 0%, #2d6a4fff 100%);
+}
+
+.gradient-in-out {
+  background: #1b4332ff;
+  background: linear-gradient(
+    90deg,
+    #081c15ff 0%,
+    #74c69dff 50%,
+    #081c15ff 100%
+  );
+}
+
+.carousel-open:checked + .carousel-item {
+  position: static;
+  opacity: 100;
+}
+.carousel-item {
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+  display: block;
+}
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+#carousel-1:checked
+  ~ .control-1
+  ~ .carousel-indicators
+  li:nth-child(1)
+  .carousel-bullet,
+#carousel-2:checked
+  ~ .control-2
+  ~ .carousel-indicators
+  li:nth-child(2)
+  .carousel-bullet,
+#carousel-3:checked
+  ~ .control-3
+  ~ .carousel-indicators
+  li:nth-child(3)
+  .carousel-bullet {
+  color: #2d6a4fff; /*Set to match the Tailwind colour you want the active one to be */
 }
