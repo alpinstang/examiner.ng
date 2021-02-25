@@ -2,12 +2,17 @@ import React from "react";
 import { useAuth } from "../../hooks/useAuth";
 import UserCard from "../../components/userCard";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 const DashBoardPage: React.FC = () => {
   const auth = useAuth();
   if (!auth.user) return null;
   return (
     <>
+      <NextSeo
+        title="User Dashboard"
+        description="Find your user profile and exams from Examiner."
+      />
       <div className="container mx-auto my-12">
         <div className="w-full">
           <h2 className="my-6 text-center text-3xl font-bold text-gray-900">

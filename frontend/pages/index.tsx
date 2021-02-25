@@ -4,17 +4,22 @@ import Hero from "../components/hero";
 import ThreeFeatures from "../components/threeFeatures";
 import AlternatingFeatures from "../components/alternatingFeatures";
 import CallToAction from "../components/callToAction";
-import { DefaultSeo } from "next-seo";
+import { NextSeo } from "next-seo";
+import PricingTable from "../components/pricingTable";
 
 // import your default seo configuration
-import SEO from "../next-seo.config";
 
 const Home: ReactNode = () => {
   return (
     <>
+      <NextSeo
+        title="Free Exam Prep"
+        description="Examiner offers free exam prep credits when you sign up."
+      />
       <Hero />
       <AlternatingFeatures />
       <ThreeFeatures />
+      <PricingTable />
       <CallToAction />
     </>
   );

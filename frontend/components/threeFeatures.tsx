@@ -3,9 +3,11 @@ import FeatureCard from "./featureCard";
 
 const ThreeFeatures = () => {
   return (
-    <section className="bg-gray-200 border-b py-8">
+    <section className="gradient-in-out border-b py-8">
       <div className="container mx-auto flex flex-wrap">
-        <TitleBar>What Makes Us Different?</TitleBar>
+        <TitleBar>
+          <span className="text-white">What Makes Us Different?</span>
+        </TitleBar>
         <div className="mx-auto w-full md:w-1/3 flex flex-col flex-grow flex-shrink">
           <a
             href="#"

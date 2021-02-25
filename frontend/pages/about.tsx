@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../assets/lotties/urban-landscape.json";
@@ -15,6 +16,10 @@ const About: React.FC = () => {
 
   return (
     <>
+      <NextSeo
+        title="About Examiner"
+        description="Examiner.NG is a Nigerian Exam Preparation Company."
+      />
       <div className="h-full border-gray-600 border-b">
         <div className="relative h-full mb-2 lg:mb-12 xl:mb-44">
           <div className="absolute -mt-10 md:-mt-40 top-0 w-full z-0">
