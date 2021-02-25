@@ -1,9 +1,9 @@
 const ExamCard = () => {
-  return(
+  return (
     <>
-    <div>
-      
-    </div>
+      <div>Card</div>
     </>
-  )
-}
+  );
+};
+
+export default ExamCard;
