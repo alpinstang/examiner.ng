@@ -2,6 +2,7 @@ import { NextSeo } from "next-seo";
 import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../assets/lotties/urban-landscape.json";
+import CallToAction from "../components/callToAction";
 import ContactForm from "../components/contactForm";
 
 const About: React.FC = () => {
@@ -30,6 +31,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+      <CallToAction />
     </>
   );
 };

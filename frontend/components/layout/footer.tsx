@@ -1,3 +1,6 @@
+import Link from "next/link";
+import React from "react";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -18,28 +21,25 @@ const Footer = () => {
               <p className="uppercase text-gray-500 md:mb-6">Links</p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    FAQ
-                  </a>
+                  <Link href="/faq">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      FAQ
+                    </a>
+                  </Link>
                 </li>
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    Help
-                  </a>
+                  <Link href="/about">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      Contact Us
+                    </a>
+                  </Link>
                 </li>
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    Support
-                  </a>
+                  <Link href="/faq">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      Support
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -97,28 +97,25 @@ const Footer = () => {
               <p className="uppercase text-gray-500 md:mb-6">Company</p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    Official Blog
-                  </a>
+                  <Link href="/blog">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      Official Blog
+                    </a>
+                  </Link>
                 </li>
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    About Us
-                  </a>
+                  <Link href="/about">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      About Us
+                    </a>
+                  </Link>
                 </li>
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                  <a
-                    href="#"
-                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                  >
-                    Contact
-                  </a>
+                  <Link href="/about">
+                    <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
+                      Contact
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
