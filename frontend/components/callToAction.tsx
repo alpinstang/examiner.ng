@@ -1,6 +1,6 @@
 const CallToAction: React.FC = () => {
   return (
-    <div className="gradient">
+    <div className="gradient-in-out shadow-lg">
       <section className="container mx-auto text-center py-6 mb-12">
         <h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
           Start Your Success Now

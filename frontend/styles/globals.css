@@ -3,17 +3,23 @@
 @tailwind utilities;
 
 .gradient {
-  background: rgb(2, 62, 138);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 62, 138, 1) 0%,
-    rgba(72, 202, 228, 1) 100%
-  );
+  background: #1b4332ff;
+  background: linear-gradient(90deg, #081c15ff 20%, #74c69dff 100%);
 }
 
 .gradient-radial {
-  background: #023e8aff;
-  background: radial-gradient(circle, rgb(2, 62, 138) 0%, rgb(0, 80, 185) 100%);
+  background: #2d6a4fff;
+  background: radial-gradient(circle, #1b4332ff 0%, #2d6a4fff 100%);
+}
+
+.gradient-in-out {
+  background: #1b4332ff;
+  background: linear-gradient(
+    90deg,
+    #081c15ff 0%,
+    #74c69dff 50%,
+    #081c15ff 100%
+  );
 }
 
 .carousel-open:checked + .carousel-item {
@@ -55,5 +61,5 @@
   ~ .carousel-indicators
   li:nth-child(3)
   .carousel-bullet {
-  color: #2b6cb0; /*Set to match the Tailwind colour you want the active one to be */
+  color: #2d6a4fff; /*Set to match the Tailwind colour you want the active one to be */
 }

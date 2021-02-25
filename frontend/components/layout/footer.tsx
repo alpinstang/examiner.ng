@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="w-full flex flex-col md:flex-row py-6">
             <div className="flex-1 mb-6 text-black">
               <a
-                className="text-examiner-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
+                className="text-examiner-700 no-underline hover:no-underline font-bold text-lg lg:text-2xl"
                 href="#"
               >
                 EXAMINER.NG
