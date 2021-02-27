@@ -63,3 +63,28 @@
   .carousel-bullet {
   color: #2d6a4fff; /*Set to match the Tailwind colour you want the active one to be */
 }
+
+.blog-list {
+  line-height: 1.5em;
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1.12em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.75em;
+}

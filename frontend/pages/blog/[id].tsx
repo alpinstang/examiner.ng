@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { GetStaticProps } from "next";
-import firebase from "firebase";
+import { firebase } from "../../config/firebase";
+import markdownToHtml from "../../lib/markdownToHtml";
+import React from "react";
 import ReactMarkdown from "react-markdown";
 
-const Post = (props: any) => {
+const Post = ({ post }: any) => {
   return (
     <>
       <div className="max-w-3xl container mx-auto my-12">
-        <div className="prose dark:prose-light">
-          <h1>{props.name}</h1>
-          <p>
-            <ReactMarkdown>{props.description}</ReactMarkdown>
-          </p>
+        <div className="">
+          <h1>{post.name}</h1>
+          <div className="blog-post">
+            <ReactMarkdown>{post.description}</ReactMarkdown>
+          </div>
           <ul>
-            {props.tags.map((tag: any) => {
-              return <li>{tag}</li>;
+            {post.tags.map((tag: any) => {
+              return <li key={tag}>{tag}</li>;
             })}
           </ul>
           <div className="float-right">
@@ -47,7 +49,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
           publish_date: dt,
           description: doc.data().description,
           short_description: doc.data().short_description,
-          tags: doc.data().tags,
+          tags: doc.data().tags || [],
           images: doc.data().images,
         };
       } else {
@@ -55,20 +57,21 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
         console.log("No such document!");
       }
     })
-    .catch((error) => {
+    .catch((error: any) => {
       console.log("Error getting document:", error);
       return error;
     });
 
+  let content = await markdownToHtml(post.description || "");
+
   return {
-    props: post,
-    revalidate: 60 * 60 * 24, // once every day
+    props: { post, content },
+    revalidate: 60 * 60 * 24 * 30, // once every month
   };
 };
 
 export async function getStaticPaths() {
   let posts: any = [];
-  let error: any = null;
   try {
     // await the promise .orderBy("createdAt", "desc")
     const querySnapshot = await firebase
@@ -94,7 +97,6 @@ export async function getStaticPaths() {
   } catch (err) {
     error = err;
   }
-  console.log("instaticpaths");
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post: any) => ({
     params: { id: post.id },
