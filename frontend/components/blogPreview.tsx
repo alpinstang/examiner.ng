@@ -1,10 +1,62 @@
-const BlogPreview = () => {
+import Link from "next/link";
+import React from "react";
+
+interface BlogProps {
+  name: string;
+  gold_text: string;
+  description: string;
+  tags: string;
+  images: Array<any>;
+  publish_date: string;
+  short_description: string;
+  id: string;
+}
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const BlogPreview = ({
+  name,
+  gold_text,
+  short_description,
+  publish_date,
+  id,
+}: BlogProps) => {
+  const truncateString = (str: string, num: number): string => {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  };
+
+  const getDate = (timestamp: any) => {
+    let date = new Date(timestamp);
+
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+
+    return day + " " + monthNames[month] + " " + year;
+  };
+
   return (
-    <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+    <article className="prose dark:prose-light space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
       <dl>
         <dt className="sr-only">Published on</dt>
         <dd className="text-base leading-6 font-medium text-gray-500">
-          <time dateTime="2021-02-16T16:05:00.000Z">Febuary 16, 2021</time>
+          <time dateTime={publish_date}>{getDate(publish_date)}</time>
         </dd>
       </dl>
       <div className="space-y-5 xl:col-span-3">
@@ -14,28 +66,28 @@ const BlogPreview = () => {
               className="text-gray-900"
               href="/tailwindcss-from-zero-to-production"
             >
-              "Tailwind CSS: From Zero to Production" on YouTube
+              {name}
             </a>
           </h2>
           <div className="prose max-w-none text-gray-500">
-            <p>
-              Today we're excited to release{" "}
-              <a href="https://www.youtube.com/watch?v=elgqxmdVms8&amp;list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0&amp;index=1">
-                Tailwind CSS: From Zero to Production
-              </a>
-              , a new screencast series that teaches you everything you need to
-              know to get up and running with Tailwind CSS v2.0 from scratch.
-            </p>
+            <b>{truncateString(gold_text, 140)}</b>
+            <p>{truncateString(short_description, 160)}</p>
           </div>
         </div>
         <div className="text-base leading-6 font-medium">
-          <a
-            className="text-teal-500 hover:text-teal-600"
-            aria-label='Read ""Tailwind CSS: From Zero to Production" on YouTube"'
-            href="/tailwindcss-from-zero-to-production"
+          <Link
+            href={{
+              pathname: `/blog/${encodeURI(name.replace(" ", "-"))}`,
+              query: {
+                name,
+              },
+            }}
+            as={"/blog/" + encodeURI(name.toLowerCase().replace(" ", "-"))}
           >
-            Read more
-          </a>
+            <a className="blog-link" aria-label="Read More">
+              Read more
+            </a>
+          </Link>
         </div>
       </div>
     </article>

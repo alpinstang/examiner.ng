@@ -114,9 +114,8 @@ function App() {
       "images",
       "status",
       "reviewed",
-      "products",
       "gold_text",
-      "long_text",
+      "short_description",
     ],
     filterableProperties: ["name", "status"],
     initialFilter: {
