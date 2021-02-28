@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { truncateString } from "../lib/truncateString";
 
 interface BlogProps {
   name: string;
@@ -34,13 +35,6 @@ const BlogPreview = ({
   publish_date,
   id,
 }: BlogProps) => {
-  const truncateString = (str: string, num: number): string => {
-    if (str.length <= num) {
-      return str;
-    }
-    return str.slice(0, num) + "...";
-  };
-
   const getDate = (timestamp: any) => {
     let date = new Date(timestamp);
 

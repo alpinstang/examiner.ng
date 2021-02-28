@@ -1,31 +1,61 @@
 import ExamCard from "../../components/examCard";
+import React from "react";
+import { firebase } from "../../config/firebase";
+import { NextSeo } from "next-seo";
+import { GetStaticProps } from "next";
 
-const Exams = () => {
+const Exams = (props: any) => {
   return (
-    <div className="flex flex-wrap -mx-2 overflow-hidden">
-      <div className="my-2 px-2 w-full overflow-hidden lg:w-1/3 xl:w-1/3">
-        {icon}
+    <>
+      <NextSeo
+        title="Find Exams"
+        description="Browse Exams offered and choose a practice test for free."
+      />
+      <div className="container max-w-7xl mx-auto my-12">
+        <div className="md:flex content-center flex-wrap -mx-2 p-3 bg-grey rounded">
+          {props.exams.length &&
+            props.exams.map((exam: any) => (
+              <ExamCard key={exam.id} {...exam} />
+            ))}
+        </div>
+        <section className="prose container max-w-7xl mx-auto">
+          <div className="flex divide divide-transparent mb-12">
+            {props.error && <div>There was an error fetching the data.</div>}
+          </div>
+        </section>
       </div>
-
-      <div className="my-2 px-2 w-full overflow-hidden lg:w-1/3 xl:w-1/3">
-        <ExamCard />
-      </div>
-
-      <div className="my-2 px-2 w-full overflow-hidden lg:w-1/3 xl:w-1/3">
-        Test 3
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Exams;
+export const getStaticProps: GetStaticProps = async () => {
+  let exams: any = [];
+  let error: any = null;
+  try {
+    // await the promise .orderBy("createdAt", "desc")
+    const querySnapshot = await firebase.firestore().collection("exams").get();
 
-const icon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-  >
-    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-  </svg>
-);
+    // "then" part after the await
+    querySnapshot.forEach(function (doc) {
+      let dt = Date.parse(doc.data().added_on.toDate().toString());
+      exams.push({
+        id: doc.id,
+        name: doc.data().name,
+        added_on: dt,
+        description: doc.data().description,
+      });
+    });
+  } catch (err) {
+    error = err;
+  }
+
+  return {
+    props: {
+      exams,
+      error,
+    },
+    revalidate: 60 * 60 * 24, // once every day
+  };
+};
+
+export default Exams;

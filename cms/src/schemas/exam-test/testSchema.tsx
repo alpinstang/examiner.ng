@@ -1,8 +1,8 @@
 import { buildSchema, EntitySchema } from "@camberi/firecms";
 import PriceTextPreview from "../../custom_preview/PriceTextPreview";
 
-export const examSchema: EntitySchema = buildSchema({
-  name: "Exam",
+export const testSchema: EntitySchema = buildSchema({
+  name: "Test",
   properties: {
     name: {
       dataType: "string",
@@ -11,10 +11,10 @@ export const examSchema: EntitySchema = buildSchema({
         required: true,
       },
     },
-    exam_full_name: {
-      title: "Long Exam Name",
+    test_full_name: {
+      title: "Long Test Name",
       dataType: "string",
-      description: "Long exam name.",
+      description: "Long test name.",
       validation: {
         required: true,
       },
@@ -65,7 +65,7 @@ export const examSchema: EntitySchema = buildSchema({
       dataType: "string",
       title: "Description",
       description:
-        "Description of the exam and requirements. Supports markdown syntax.",
+        "Description of the test and requirements. Supports markdown syntax.",
       config: {
         markdown: true,
       },
@@ -76,29 +76,25 @@ export const examSchema: EntitySchema = buildSchema({
       readOnly: true,
       autoValue: "on_create",
     },
-
     public: {
       dataType: "boolean",
       title: "Public",
-      description: "Should this exam be visible in the website",
+      description: "Should this test be visible in the website",
       longDescription:
-        "Set this to true when you are ready for the exam to be available for users to access.",
+        "Set this to true when you are ready for the test to be available for users to access.",
     },
-    has_schools: {
-      dataType: "boolean",
-      title: "Schools",
-      description: "Is this exam different for different schools?",
-      longDescription: "Set this to true to enable school selection.",
-    },
-    number_of_years: {
-      dataType: "number",
-      title: "Number of Years",
-      validation: {
-        min: 1,
-        max: 1000,
+    questions_list: {
+      title: "Questions associated with this test",
+      description:
+        "To add questions, it's recommended to use the CSV uploader.",
+      dataType: "array",
+      readOnly: true,
+      of: {
+        dataType: "reference",
+        collectionPath: "tests/questions",
       },
     },
-    number_of_subjects: {
+    questions_count: {
       dataType: "number",
       title: "Number of Subjects",
       validation: {
@@ -106,32 +102,21 @@ export const examSchema: EntitySchema = buildSchema({
         max: 1000,
       },
     },
-    total_attempts: {
+    duration: {
       dataType: "number",
-      title: "Total Attempts",
+      title: "Duration",
+      description: "Duration in minutes of the test.",
       validation: {
-        min: 1,
-      },
-    },
-    tests_list: {
-      dataType: "array",
-      title: "Tests",
-      description: "Associated Tests with Exam",
-      longDescription:
-        "To add more tests, go to the Tests page using the navigation sidebar on the left",
-      of: {
-        dataType: "reference",
-        collectionPath: "tests",
+        min: 5,
       },
     },
   },
   defaultValues: {
-    number_of_years: 1,
-    number_of_subjects: 1,
-    total_attempts: 1,
+    questions_count: 1,
+    duration: 5,
     currency: "DOL",
   },
   onPreDelete: () => {
-    throw Error("Exam deletion not allowed! Please contact administrator.");
+    throw Error("Test deletion not allowed! Please contact administrator.");
   },
 });

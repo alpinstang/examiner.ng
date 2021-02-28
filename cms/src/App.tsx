@@ -30,7 +30,7 @@ import { productAdditionalColumn } from "./schemas/product/productAdditionalColD
 import { usersSchema } from "./schemas/user/usersSchema";
 
 import { examSchema } from "./schemas/exam/examSchema";
-import { questionSchema } from "./schemas/exam/questionSchema";
+import { questionSchema } from "./schemas/exam-test/questionSchema";
 import { UploadQuestionsView } from "./FileUploadView";
 
 function App() {
@@ -162,7 +162,8 @@ function App() {
     // Check if the user is someone we want to manage CMS
     if (
       user?.email === "jcm.codes@gmail.com" ||
-      user?.email === "ileolagold.olalekan@gmail.com"
+      user?.email === "ileolagold.olalekan@gmail.com" ||
+      user?.email === "ajibawoolusola@gmail.com"
     ) {
       console.log("Allowing access to ", user?.email);
       return true;

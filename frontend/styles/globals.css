@@ -22,6 +22,16 @@
   );
 }
 
+.gradient-lr {
+  background: rgb(47, 114, 86);
+  background: linear-gradient(
+    90deg,
+    rgb(33, 110, 83) 0%,
+    rgb(105, 189, 147) 50%,
+    rgb(90, 187, 153) 100%
+  );
+}
+
 .carousel-open:checked + .carousel-item {
   position: static;
   opacity: 100;

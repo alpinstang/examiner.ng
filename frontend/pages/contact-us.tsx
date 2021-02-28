@@ -5,7 +5,7 @@ import animationData from "../assets/lotties/urban-landscape.json";
 import CallToAction from "../components/callToAction";
 import ContactForm from "../components/contactForm";
 
-const About: React.FC = () => {
+const Contact: React.FC = () => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -18,7 +18,7 @@ const About: React.FC = () => {
   return (
     <>
       <NextSeo
-        title="About Examiner"
+        title="Contact Us"
         description="Examiner.NG is a Nigerian Exam Preparation Company."
       />
       <div className="h-full border-gray-600 border-b">
@@ -36,4 +36,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default Contact;

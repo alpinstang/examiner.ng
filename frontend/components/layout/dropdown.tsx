@@ -45,7 +45,7 @@ const DropdownNav = () => {
         >
           <div className="bg-gray-100 rounded-md top-rounded-lg">
             <div className="py-1 min-w-full">
-              <Link href="/about">
+              <Link href="/about-us">
                 <a
                   role="menuitem"
                   className="w-36 block px-4 py-2 text-sm text-gray-700 hover:bg-examiner-200 hover:text-gray-900"
@@ -53,12 +53,29 @@ const DropdownNav = () => {
                   About Us
                 </a>
               </Link>
-              <Link href="/about">
+
+              <Link href="/blog">
                 <a
                   role="menuitem"
                   className="w-36 block px-4 py-2 text-sm text-gray-700 hover:bg-examiner-200 hover:text-gray-900"
                 >
-                  FAQ
+                  Official Blog
+                </a>
+              </Link>
+              <Link href="/help" as="/support">
+                <a
+                  role="menuitem"
+                  className="w-36 block px-4 py-2 text-sm text-gray-700 hover:bg-examiner-200 hover:text-gray-900"
+                >
+                  Support
+                </a>
+              </Link>
+              <Link href="/contact-us" as="/contact-us">
+                <a
+                  role="menuitem"
+                  className="w-36 block px-4 py-2 text-sm text-gray-700 hover:bg-examiner-200 hover:text-gray-900"
+                >
+                  Contact Us
                 </a>
               </Link>
             </div>
