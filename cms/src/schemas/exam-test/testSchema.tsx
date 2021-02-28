@@ -96,7 +96,7 @@ export const testSchema: EntitySchema = buildSchema({
     },
     questions_count: {
       dataType: "number",
-      title: "Number of Subjects",
+      title: "Number of Questions",
       validation: {
         min: 1,
         max: 1000,

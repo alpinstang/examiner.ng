@@ -22,6 +22,7 @@ export const UploadQuestionsView = () => {
   const [exams, setExams] = useState([{ id: "", data: { name: "", id: "" } }]);
   const [selectedExam, setSelectedExam] = useState("");
   const [log, updateLog] = useState("$_ ");
+  const [tests, setTests]: any[] = useState([]);
 
   let optionsList: any = [{}];
   if (!firebase.apps.length) {
@@ -49,6 +50,7 @@ export const UploadQuestionsView = () => {
           //return res;
         }
       });
+      console.log(optionsList);
       return optionsList;
       // let id = data.docs[0].id;s
     } catch (error) {
@@ -125,6 +127,20 @@ export const UploadQuestionsView = () => {
     }
     logging("Exam selected. ID: " + e.target.value);
     setSelectedExam(e.target.value);
+    setTimeout(() => {
+      populateTests(e.target.value);
+    }, 500);
+  };
+
+  const populateTests = (target: any) => {
+    let res: any = exams?.find((x: any) => x.id === target);
+    if (res) {
+      console.log(res.data.tests_list);
+      setTests(res.data.tests_list);
+    } else {
+      console.log("No tests found!");
+      logging("No tests found!");
+    }
   };
 
   const logging = (value: any) => {
@@ -199,10 +215,19 @@ export const UploadQuestionsView = () => {
               <option value="false"> ~ SELECT AN EXAM ~ </option>
               {exams
                 ? exams.map((obj) => {
-                    return <option value={obj.id}>{obj.data.name}</option>;
+                    return (
+                      <option key={obj.id} value={obj.id}>
+                        {obj.data.name}
+                      </option>
+                    );
                   })
                 : "No Exams."}
             </select>
+            {tests &&
+              tests.map((test: any) => {
+                console.log(tests);
+                return <div key="1">{test}</div>;
+              })}
           </div>
         </div>
         <div
