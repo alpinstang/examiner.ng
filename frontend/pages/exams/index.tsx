@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
       exams,
       error,
     },
-    revalidate: 60 * 60 * 24, // once every day
+    revalidate: 60 * 60 * 24 * 15, // once every 15 days
   };
 };
 
