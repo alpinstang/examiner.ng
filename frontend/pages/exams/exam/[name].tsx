@@ -1,4 +1,6 @@
-// THIS WILL RENDER THE SPECIFIC TESTS OF AN EXAM TYPE COLLECTION
+// THIS WILL RENDER THE SPECIFIC TESTS (subjects)
+// OF AN EXAM TYPE COLLECTION
+
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { firebase } from "../../../config/firebase";
@@ -15,9 +17,10 @@ const Tests = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  let post: any = {};
+  let exam: any = {};
+  let tests: any = [];
 
-  const docRef = firebase.firestore().collection("blog").doc(params.id);
+  const docRef = firebase.firestore().collection("exams").doc(params.id);
 
   // "then" part after the await
   await docRef
@@ -25,8 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     .then((doc: any) => {
       if (doc.exists) {
         console.log("Document data:", doc.data());
-        let dt = Date.parse(doc.data().publish_date.toDate().toString());
-        post = {
+        exam = {
           id: doc.id,
           name: doc.data().name,
           gold_text: doc.data().gold_text,
@@ -46,29 +48,23 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
       return error;
     });
 
-  let content = await markdownToHtml(post.description || "");
-
   return {
-    props: { post, content },
+    props: { tests },
     revalidate: 60 * 60 * 24 * 30, // once every month
   };
 };
 
 export async function getStaticPaths() {
-  let posts: any = [];
+  let exams: any = [];
   let error: any = null;
   try {
     // await the promise .orderBy("createdAt", "desc")
-    const querySnapshot = await firebase
-      .firestore()
-      .collection("blog")
-      .orderBy("publish_date", "desc")
-      .get();
+    const querySnapshot = await firebase.firestore().collection("exams").get();
 
     // "then" part after the await
     querySnapshot.forEach(function (doc) {
       let dt = Date.parse(doc.data().publish_date.toDate().toString());
-      posts.push({
+      exams.push({
         id: doc.id,
         name: doc.data().name,
         gold_text: doc.data().gold_text,
@@ -84,8 +80,8 @@ export async function getStaticPaths() {
     return error;
   }
   // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post: any) => ({
-    params: { id: post.id },
+  const paths = exams.map((post: any) => ({
+    params: { id: exam.id },
   }));
 
   // We'll pre-render only these paths at build time.
