@@ -9,14 +9,15 @@ const Tests = (props: any) => {
 
   return (
     <div>
-      <h1>{JSON.stringify(props, null, 2)} Subjects</h1>
+      <h1>Subjects</h1>
       Tests List Page - Specific tests of an exam type <p>test</p>
+      <pre>{JSON.stringify(props, null, 2)}</pre>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  //let exam: any = {};
+  let exam: any = {};
   let tests: any = [];
 
   const docRef = firebase.firestore().collection("exams").doc(params.id);
@@ -30,12 +31,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
         exam = {
           id: doc.id,
           name: doc.data().name,
-          gold_text: doc.data().gold_text,
-          publish_date: dt,
-          description: doc.data().description,
-          short_description: doc.data().short_description,
-          tags: doc.data().tags || [],
-          images: doc.data().images,
+          tests_list: doc.data().tests_list,
         };
       } else {
         // doc.data() will be undefined in this case
@@ -47,8 +43,20 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
       return error;
     });
 
+  const querySnapshot = await firebase.firestore().collection("tests").get();
+
+  // "then" part after the await
+  querySnapshot.forEach(function (doc) {
+    tests.push({
+      id: doc.id,
+      name: doc.data().name,
+      test_full_name: doc.data().test_full_name,
+      questions_count: doc.data().questions_count,
+    });
+  });
+
   return {
-    props: { tests },
+    props: { tests, exam },
     revalidate: 60 * 60 * 24 * 30, // once every month
   };
 };
