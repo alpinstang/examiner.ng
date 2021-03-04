@@ -29,8 +29,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
       if (doc.exists) {
         console.log("Document data:", doc.data());
 
-        doc.data().tests_list.forEach((test: any) => {
-          await test.get().then((doc) => {
+        doc.data().tests_list.forEach(async (test: any) => {
+          await test.get().then((doc: any) => {
             testArray.push(doc);
           });
         });
