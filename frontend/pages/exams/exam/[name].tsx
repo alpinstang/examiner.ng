@@ -69,16 +69,13 @@ export async function getStaticPaths() {
 
     // "then" part after the await
     querySnapshot.forEach(function (doc) {
-      let dt = Date.parse(doc.data().publish_date.toDate().toString());
+      let dt = Date.parse(doc.data().added_on.toDate().toString());
       exams.push({
         id: doc.id,
         name: doc.data().name,
-        gold_text: doc.data().gold_text,
-        publish_date: dt,
+        exam_full_name: doc.data().exam_full_name,
         description: doc.data().description,
-        short_description: doc.data().short_description,
-        tags: doc.data().tags,
-        images: doc.data().images,
+        added_on: dt,
       });
     });
   } catch (err) {
