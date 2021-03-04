@@ -29,11 +29,13 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
       if (doc.exists) {
         console.log("Document data:", doc.data());
 
-        doc.data().tests_list.forEach(async (test: any) => {
-          await test.get().then((doc: any) => {
-            testArray.push(doc);
+        if (doc.data().tests_list) {
+          doc.data().tests_list.forEach(async (test: any) => {
+            await test.get().then((doc: any) => {
+              testArray.push(doc);
+            });
           });
-        });
+        }
 
         exam = {
           id: doc.id,
