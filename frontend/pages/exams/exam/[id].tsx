@@ -19,7 +19,7 @@ const Tests = (props: any) => {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   let exam: any = {};
   let tests: any = [];
-
+  let testArray: any = [];
   const docRef = firebase.firestore().collection("exams").doc(params.id);
 
   // "then" part after the await
@@ -28,10 +28,17 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     .then((doc: any) => {
       if (doc.exists) {
         console.log("Document data:", doc.data());
+
+        doc.data().tests_list.forEach((test: any) => {
+          await test.get().then((doc) => {
+            testArray.push(doc);
+          });
+        });
+
         exam = {
           id: doc.id,
           name: doc.data().name,
-          tests_list: doc.data().tests_list,
+          tests_list: testArray,
         };
       } else {
         // doc.data() will be undefined in this case
