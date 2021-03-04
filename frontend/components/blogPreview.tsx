@@ -33,7 +33,6 @@ const BlogPreview = ({
   gold_text,
   short_description,
   publish_date,
-  id,
 }: BlogProps) => {
   const getDate = (timestamp: any) => {
     let date = new Date(timestamp);
