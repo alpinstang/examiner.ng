@@ -1,23 +1,22 @@
 // THIS WILL RENDER THE SPECIFIC TESTS (subjects)
 // OF AN EXAM TYPE COLLECTION
 
-import Link from "next/link";
 import { GetStaticProps } from "next";
 import { firebase } from "../../../config/firebase";
 
-const Tests = (props) => {
+const Tests = (props: any) => {
   console.log(props);
 
   return (
     <div>
-      <h1>{} Subjects</h1>
+      <h1>{JSON.stringify(props, null, 2)} Subjects</h1>
       Tests List Page - Specific tests of an exam type <p>test</p>
     </div>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  let exam: any = {};
+  //let exam: any = {};
   let tests: any = [];
 
   const docRef = firebase.firestore().collection("exams").doc(params.id);
@@ -80,7 +79,7 @@ export async function getStaticPaths() {
     return error;
   }
   // Get the paths we want to pre-render based on posts
-  const paths = exams.map((post: any) => ({
+  const paths = exams.map((exam: any) => ({
     params: { id: exam.id },
   }));
 
