@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
         exam = {
           id: doc.id,
           name: doc.data().name,
-          tests_list: testArray,
+          //tests_list: testArray,
         };
       } else {
         // doc.data() will be undefined in this case
