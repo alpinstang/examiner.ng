@@ -63,7 +63,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
 export async function getStaticPaths() {
   let exams: any = [];
-  let error: any = null;
   try {
     // await the promise .orderBy("createdAt", "desc")
     const querySnapshot = await firebase.firestore().collection("exams").get();
@@ -83,8 +82,7 @@ export async function getStaticPaths() {
       });
     });
   } catch (err) {
-    error = err;
-    return error;
+    console.log(err);
   }
   // Get the paths we want to pre-render based on posts
   const paths = exams.map((exam: any) => ({
