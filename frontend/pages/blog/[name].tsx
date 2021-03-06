@@ -3,21 +3,26 @@ import { GetStaticProps } from "next";
 import { firebase } from "../../config/firebase";
 import markdownToHtml from "../../lib/markdownToHtml";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 
-const Post = ({ post }: any) => {
+const Post = (props: any) => {
+  console.log(props);
+  const { post, content } = props;
   return (
     <>
-      <div className="max-w-3xl container mx-auto my-12">
+      <div className="max-w-3xl container mx-auto my-12 prose dark:prose-light">
         <div className="">
           <h1>{post.name}</h1>
           <div className="blog-post">
-            <ReactMarkdown>{post.description}</ReactMarkdown>
+            <article className="prose lg:prose-xl">
+              <div dangerouslySetInnerHTML={{ __html: content }} />
+            </article>
           </div>
           <ul>
-            {post.tags.map((tag: any) => {
-              return <li key={tag}>{tag}</li>;
-            })}
+            {post.tags
+              ? post.tags.map((tag: any) => {
+                  return <li key={tag}>{tag}</li>;
+                })
+              : "No Tags"}
           </ul>
           <div className="float-right">
             <Link href="/blog">
@@ -32,34 +37,36 @@ const Post = ({ post }: any) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   let post: any = {};
+  console.log(params);
+  // const docRef = firebase
+  //   .firestore()
+  //   .collection("blog")
+  //   .where("name", "==", params.name);
 
-  const docRef = firebase.firestore().collection("blog").doc(params.id);
-
-  // "then" part after the await
-  await docRef
+  await firebase
+    .firestore()
+    .collection("blog")
     .get()
-    .then((doc: any) => {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-        let dt = Date.parse(doc.data().publish_date.toDate().toString());
-        post = {
-          id: doc.id,
-          name: doc.data().name,
-          gold_text: doc.data().gold_text,
-          publish_date: dt,
-          description: doc.data().description,
-          short_description: doc.data().short_description,
-          tags: doc.data().tags || [],
-          images: doc.data().images,
-        };
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch((error: any) => {
-      console.log("Error getting document:", error);
-      return error;
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc: any) => {
+        // doc.data() is never undefined for query doc snapshots
+        if (doc.data().name == params.name) {
+          console.log("match!");
+          let dt = Date.parse(doc.data().publish_date.toDate().toString());
+          post = {
+            id: doc.id,
+            name: doc.data().name,
+            gold_text: doc.data().gold_text,
+            publish_date: dt,
+            description: doc.data().description,
+            short_description: doc.data().short_description,
+            tags: [],
+            images: doc.data().images,
+          };
+        } else {
+          console.log("No such document!");
+        }
+      });
     });
 
   let content = await markdownToHtml(post.description || "");
@@ -101,7 +108,7 @@ export async function getStaticPaths() {
   }
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post: any) => ({
-    params: { id: post.id },
+    params: { name: post.name },
   }));
 
   // We'll pre-render only these paths at build time.

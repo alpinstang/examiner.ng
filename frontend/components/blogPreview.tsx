@@ -55,12 +55,7 @@ const BlogPreview = ({
       <div className="space-y-5 xl:col-span-3">
         <div className="space-y-6">
           <h2 className="text-2xl leading-8 font-bold tracking-tight">
-            <a
-              className="text-gray-900"
-              href="/tailwindcss-from-zero-to-production"
-            >
-              {name}
-            </a>
+            {name}
           </h2>
           <div className="prose max-w-none text-gray-500">
             <b>{truncateString(gold_text, 140)}</b>
@@ -70,12 +65,11 @@ const BlogPreview = ({
         <div className="text-base leading-6 font-medium">
           <Link
             href={{
-              pathname: `/blog/${encodeURI(name.replace(" ", "-"))}`,
+              pathname: `/blog/${encodeURI(name)}`,
               query: {
                 name,
               },
             }}
-            as={"/blog/" + encodeURI(name.toLowerCase().replace(" ", "-"))}
           >
             <a className="blog-link" aria-label="Read More">
               Read more

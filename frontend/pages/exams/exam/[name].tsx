@@ -20,8 +20,10 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   let exam: any = {};
   let tests: any = [];
   let testArray: any = [];
-  const docRef = firebase.firestore().collection("exams").doc(params.id);
-
+  const docRef = firebase
+    .firestore()
+    .collection("exams")
+    .where("name", "==", params.name);
   // "then" part after the await
   await docRef
     .get()
@@ -33,6 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
           doc.data().tests_list.forEach(async (test: any) => {
             await test.get().then((doc: any) => {
               testArray.push(doc);
+              console.log("array pf tests");
             });
           });
         }
@@ -92,7 +95,7 @@ export async function getStaticPaths() {
   }
   // Get the paths we want to pre-render based on posts
   const paths = exams.map((exam: any) => ({
-    params: { id: exam.id },
+    params: { name: exam.name },
   }));
 
   // We'll pre-render only these paths at build time.
