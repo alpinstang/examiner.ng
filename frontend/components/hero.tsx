@@ -4,16 +4,16 @@ import { LearningSVG } from "./svg/learning.svg";
 const Hero = () => {
   return (
     <div className="gradient text-white p-8 mb-4">
-      <div className="pt-24">
+      <div className="">
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">
               Are you ready to pass your next exam?
             </p>
-            <h1 className="my-4 text-5xl font-bold leading-tight">
+            <h1 className="my-4 md:text-5xl font-bold leading-tight">
               Prepare with Examiner and Easily Pass!
             </h1>
-            <p className="leading-normal text-2xl mb-8">
+            <p className="leading-normal font-light text-2xl md:mb-8">
               We offer online <span className="underline">and</span> offline
               exam preparation for students of all levels.
             </p>
@@ -22,7 +22,7 @@ const Hero = () => {
             </button>
           </div>
           <div className="w-full md:w-3/5 py-6 text-center">
-            <div className="w-full max-w-4xl">
+            <div className="w-full max-w-4xl -mt-28 md:mt-0">
               <LearningSVG />
             </div>
           </div>

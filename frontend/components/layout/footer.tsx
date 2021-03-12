@@ -6,10 +6,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white z-50 relative">
+      <footer className="bg-white z-50 relative text-center md:text-left">
         <div className="container mx-auto px-8 bg-white">
-          <div className="w-full flex flex-col md:flex-row py-6">
-            <div className="flex-1 mb-6 text-black">
+          <div className="w-full flex flex-col md:flex-row md:py-6">
+            <div className="flex-1 mb-2 md:mb-6 text-black">
               <a
                 className="text-examiner-700 no-underline hover:no-underline font-bold text-lg lg:text-2xl"
                 href="#"
@@ -19,7 +19,7 @@ const Footer = () => {
             </div>
             <div className="flex-1">
               <p className="uppercase text-gray-500 md:mb-6">Links</p>
-              <ul className="list-reset mb-6">
+              <ul className="list-reset mb-0 md:mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <Link href="/faq">
                     <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
@@ -41,11 +41,27 @@ const Footer = () => {
                     </a>
                   </Link>
                 </li>
+                <li className="md:hidden mt-2 inline-block mr-2 md:block md:mr-0">
+                  <a
+                    href="#"
+                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
+                  >
+                    Terms
+                  </a>
+                </li>
+                <li className="md:hidden mt-2 inline-block mr-2 md:block md:mr-0">
+                  <a
+                    href="#"
+                    className="no-underline hover:underline text-gray-800 hover:text-pink-500"
+                  >
+                    Privacy
+                  </a>
+                </li>
               </ul>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 hidden md:block">
               <p className="uppercase text-gray-500 md:mb-6">Legal</p>
-              <ul className="list-reset mb-6">
+              <ul className="list-reset mb-2 md:mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
@@ -65,8 +81,10 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase text-gray-500 md:mb-6">Social</p>
-              <ul className="list-reset mb-6">
+              <p className="hidden md:block uppercase text-gray-500 mb-0 md:mb-6">
+                Social
+              </p>
+              <ul className="list-reset mb-0 md:mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <a
                     href="#"
@@ -94,8 +112,10 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase text-gray-500 md:mb-6">Company</p>
-              <ul className="list-reset mb-6">
+              <p className="hidden md:block uppercase text-gray-500 md:mb-6">
+                Company
+              </p>
+              <ul className="list-reset mb-2 md:mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <Link href="/blog">
                     <a className="no-underline hover:underline text-gray-800 hover:text-pink-500">
@@ -122,7 +142,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-examiner-700 text-white">
-          <div className="container mx-auto text-center py-8">
+          <div className="container mx-auto text-center py-4 mt-4">
             <p>&copy; {currentYear} Examiner.ng | All Rights Reserved</p>
           </div>
         </div>

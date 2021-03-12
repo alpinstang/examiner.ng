@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .gradient {
-  background: #1b4332ff;
-  background: linear-gradient(90deg, #081c15ff 20%, #74c69dff 100%);
+  background: rgb(52, 168, 120);
+  background: linear-gradient(
+    45deg,
+    rgb(60, 184, 132) 20%,
+    rgb(52, 168, 120) 100%
+  );
 }
 
 .gradient-radial {
