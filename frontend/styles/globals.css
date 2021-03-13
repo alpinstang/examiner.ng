@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manjari:wght@100;400;700&family=Roboto&display=swap");
+
+body {
+  font-family: "Manjari", "Roboto", sans-serif;
+}
 
 .gradient {
   background: rgb(52, 168, 120);
@@ -20,17 +25,17 @@
   background: #1b4332ff;
   background: linear-gradient(
     90deg,
-    #081c15ff 0%,
-    #74c69dff 50%,
-    #081c15ff 100%
+    rgb(52, 168, 120) 0%,
+    rgb(152, 238, 195) 50%,
+    rgb(52, 168, 120) 100%
   );
 }
 
 .gradient-lr {
   background: rgb(47, 114, 86);
   background: linear-gradient(
-    90deg,
-    rgb(33, 110, 83) 0%,
+    120deg,
+    rgb(52, 168, 120) 0%,
     rgb(105, 189, 147) 50%,
     rgb(90, 187, 153) 100%
   );
@@ -81,7 +86,6 @@
 .blog-list {
   line-height: 1.5em;
   font-size: 16px;
-  font-family: "Courier New", Courier, monospace;
 }
 
 h1 {

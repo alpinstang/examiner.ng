@@ -2,6 +2,9 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: "Manjari, Roboto, sans-serif",
+    },
     minWidth: {
       0: "0",
       "1/4": "25%",
@@ -14,6 +17,13 @@ module.exports = {
         half: "50vh",
       },
       colors: {
+        gold: "#FFD700",
+        brightred: "#e74c3c",
+        brightorange: "#fb8604",
+        brightgreen: "#2ecc71",
+        brightblue: "#1b7fff",
+        brightpurple: "#9b59b6",
+        brightturquoise: "#00badb",
         nigeria: "#00844a",
         examiner: {
           50: "#EFFAF1ff",
@@ -120,6 +130,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      fontFamily: ["hover", "focus"],
       typography: ["dark"],
     },
   },

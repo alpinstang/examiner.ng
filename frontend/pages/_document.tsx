@@ -85,7 +85,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
-        <body className="leading-normal tracking-normal">
+        <body className="leading-normal tracking-normal font-sans">
           <Main />
           <NextScript />
         </body>
