@@ -4,7 +4,6 @@ import React from "react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import DropdownNav from "./dropdown";
-import logo from "../../assets/examiner-logo-white.png";
 
 export default function IndexPage() {
   const [active, setActive] = useState(false);
