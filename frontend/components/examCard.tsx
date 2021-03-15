@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { firebase } from "../config/firebase";
 import { truncateString } from "../lib/truncateString";
 
-interface ExamData {
-  id: string;
-  name: string;
-  exam_full_name: string;
-  description: string;
-  image: string;
-}
+// interface ExamData {
+//   id: string;
+//   name: string;
+//   exam_full_name: string;
+//   description: string;
+//   image: string;
+// }
 
 const ExamCard = (props: any) => {
   const { name, description, image, exam_full_name, color, id } = props;
