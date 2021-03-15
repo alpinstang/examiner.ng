@@ -134,9 +134,10 @@ const ExamCard = (props: any) => {
             </div>
             <Link
               href={{
-                pathname: `/exams/${encodeURI(name)}`,
+                pathname: `/exam/${encodeURI(name)}`,
                 query: {
                   name,
+                  id,
                 },
               }}
             >
