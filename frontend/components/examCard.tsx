@@ -35,6 +35,7 @@ const ExamCard = (props: any) => {
           className={`flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-${color} cursor-pointer hover:shadow-2xl border border-gray-400`}
         >
           <div
+            alt={name + " - " + id}
             className="w-full rounded-tl-super rounded-tr-super bg-cover bg-center card-section-1"
             style={{
               height: "200px",
