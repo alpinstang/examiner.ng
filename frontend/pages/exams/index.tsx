@@ -5,6 +5,40 @@ import { NextSeo } from "next-seo";
 import { GetStaticProps } from "next";
 
 const Exams = (props: any) => {
+  const randomNumber = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
+  const randomColor = () => {
+    let color: string = "";
+    let value = randomNumber(1, 6);
+    console.log("value", value);
+    switch (value) {
+      case 1:
+        color = "brightblue";
+        break;
+      case 2:
+        color = "brightgreen";
+        break;
+      case 3:
+        color = "brightred";
+        break;
+      case 4:
+        color = "brightpurple";
+        break;
+      case 5:
+        color = "brightorange";
+        break;
+      case 6:
+        color = "brightturquoise";
+        break;
+      default:
+        color = "brightblue";
+    }
+
+    return color;
+  };
+
   return (
     <>
       <NextSeo
@@ -14,9 +48,10 @@ const Exams = (props: any) => {
       <div className="container mx-auto my-12">
         <div className="md:flex content-center flex-wrap -mx-2 p-3 m-1">
           {props.exams.length &&
-            props.exams.map((exam: any) => (
-              <ExamCard key={exam.id} {...exam} />
-            ))}
+            props.exams.map((exam: any) => {
+              let color = randomColor();
+              return <ExamCard key={exam.id} color={color} {...exam} />;
+            })}
         </div>
         <section className="prose container max-w-7xl mx-auto">
           <div className="flex divide divide-transparent mb-12">

@@ -11,14 +11,10 @@ interface ExamData {
   image: string;
 }
 
-const ExamCard = ({
-  name,
-  description,
-  image,
-  exam_full_name,
-  id,
-}: ExamData) => {
+const ExamCard = (props: any) => {
+  const { name, description, image, exam_full_name, color, id } = props;
   const [url, setUrl] = useState("");
+  console.log(color);
 
   useEffect(() => {
     const getUrl = async () => {
@@ -35,7 +31,9 @@ const ExamCard = ({
   return (
     <>
       <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-100 p-2">
-        <label className="flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-purple-500 cursor-pointer hover:shadow-2xl border border-gray-400">
+        <label
+          className={`flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-${color} cursor-pointer hover:shadow-2xl border border-gray-400`}
+        >
           <div
             className="w-full rounded-tl-super rounded-tr-super bg-cover bg-center card-section-1"
             style={{
@@ -58,7 +56,9 @@ const ExamCard = ({
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center w-full h-full rounded-b-super bg-purple-500 pt-6 pb-9 px-3">
+          <div
+            className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-${color} pt-6 pb-9 px-3`}
+          >
             <div className="text-xl text-white">
               <div className="w-100">
                 <div className="inline-block w-6 h-auto">
