@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 const CallToAction: React.FC = () => {
-  const getForm = () => {
-    console.log("onSubmit");
-  };
+  // const getForm = () => {
+  //   console.log("onSubmit");
+  // };
 
   return (
     <div className="gradient shadow-lg">
