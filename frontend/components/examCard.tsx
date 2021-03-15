@@ -1,112 +1,150 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { firebase } from "../config/firebase";
 import { truncateString } from "../lib/truncateString";
 
 interface ExamData {
   id: string;
   name: string;
+  exam_full_name: string;
   description: string;
+  image: string;
 }
 
-const ExamCard = ({ name, description, id }: ExamData) => {
+const ExamCard = ({
+  name,
+  description,
+  image,
+  exam_full_name,
+  id,
+}: ExamData) => {
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    const getUrl = async () => {
+      let storage = firebase.storage();
+      var pathReference = storage.ref(image);
+      await pathReference.getDownloadURL().then((url) => {
+        setUrl(url);
+      });
+    };
+
+    getUrl();
+  }, []);
+
   return (
     <>
-      <div className="md:flex md:w-1/2 lg:w-1/3">
-        <div className="md:flex-1 p-4 rounded bg-white ">
-          <div className="relative py-3 h-full w-full min-h-48 sm:max-w-xl sm:mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-examiner-400 via-green-400 to-examiner-500 shadow-lg transform -skew-y-2 sm:skew-y-0 sm:-rotate-2 sm:rounded-lg"></div>
-            <div className="relative h-full px-4 py-2 bg-white shadow-lg sm:rounded-lg sm:p-2 border-2 border-examiner-300 bg-gray-100">
-              <div className="max-w-md mx-auto">
-                <div></div>
-                <div className="divide-y divide-gray-200">
-                  <div className="py-5 px-5 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                    <h3>{name}</h3>
-                    <p>{truncateString(description, 80)}</p>
-                    <ul className="list-disc space-y-2 ml-1 mr-4">
-                      <li className="flex items-start">
-                        <div className="w-1/6">
-                          <span className="h-6 flex items-center-left sm:h-7">
-                            <svg
-                              className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                        <div className="w-3/6 text-center">Number of Years</div>
-                        <div className="w-2/6">
-                          <span className="float-right">3</span>
-                        </div>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-1/6">
-                          <span className="h-6 flex items-center-left sm:h-7">
-                            <svg
-                              className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                        <div className="w-3/6 text-center">Total Subjects</div>
-                        <div className="w-2/6">
-                          <span className="float-right">16</span>
-                        </div>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-1/6">
-                          <span className="h-6 flex items-center-left sm:h-7">
-                            <svg
-                              className="flex-shrink-0 h-5 w-5 text-cyan-500"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                        <div className="w-3/6 text-center">Total Attempts</div>
-                        <div className="w-2/6">
-                          <span className="float-right">1231241</span>
-                        </div>
-                      </li>
-                    </ul>
-                    <div className="align-bottom">
-                      <Link
-                        href={{
-                          pathname: `/exams/exam/${name}`,
-                          query: {
-                            id,
-                          },
-                        }}
-                      >
-                        <a className="blog-link" aria-label="View Tests">
-                          View Tests
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-100 p-2">
+        <label className="flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-purple-500 cursor-pointer hover:shadow-2xl border border-gray-400">
+          <div
+            className="w-full rounded-tl-super rounded-tr-super bg-cover bg-center card-section-1"
+            style={{
+              height: "200px",
+              backgroundImage: `url(${url ? url : "/static/loading.gif"})`,
+            }}
+          >
+            <div
+              style={{ height: "200px" }}
+              className="w-full rounded-tl-super rounded-tr-super py-6 px-3 bg-gray-100 bg-opacity-20 hover:bg-opacity-80 opacity-0 hover:opacity-100 transition duration-100 ease-in-out"
+            >
+              <p className="mx-auto text-3xl font-bold text-center underline text-purple-500 group-hover:text-black">
+                {name}
+              </p>
+              <p className="mx-auto text-sm font-bold text-center underline text-purple-500 group-hover:text-black">
+                {truncateString(exam_full_name, 50)}
+              </p>
+              <p className="text-sm font-bold text-center uppercase group-hover:text-black text-purple-500">
+                {truncateString(description, 100)}
+              </p>
             </div>
           </div>
-        </div>
+          <div className="flex flex-col items-center justify-center w-full h-full rounded-b-super bg-purple-500 pt-6 pb-9 px-3">
+            <div className="text-xl text-white">
+              <div className="w-100">
+                <div className="inline-block w-6 h-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path
+                      fill="#fff"
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                </div>
+                <div className="inline text-white">12 Subjects</div>
+              </div>
+              <div className="w-full">
+                <div className="inline-block w-6 h-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path
+                      fill="#fff"
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                </div>
+                <div className="inline text-white">16345 Attempts</div>
+              </div>
+
+              <div className="w-full">
+                <div className="inline-block w-6 h-auto">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path
+                      fill="#fff"
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                </div>
+                <div className="inline text-white">5 years</div>
+              </div>
+            </div>
+            <Link
+              href={{
+                pathname: `/exams/${encodeURI(name)}`,
+                query: {
+                  name,
+                },
+              }}
+            >
+              <button className="w-5/6 py-2 pt-4 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded-xl text-blue-500">
+                View {name}
+              </button>
+            </Link>
+          </div>
+        </label>
       </div>
     </>
   );

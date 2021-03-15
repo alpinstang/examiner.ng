@@ -13,7 +13,7 @@ const Blog = (props: any) => {
       />
       <section className="prose container max-w-3xl mx-auto">
         <div className="divide-y divide-gray-200 mb-12">
-          <div className="pt-6 pb-8 space-y-2 md:space-y-5">
+          <div className="pt-6 md:pt-12 pb-8 space-y-2 md:space-y-5">
             <h1 className="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
               Latest
             </h1>

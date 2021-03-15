@@ -27,7 +27,7 @@ const PricingTable = () => {
                     monthly
                   </p>
                   <p className="text-sm text-center uppercase group-hover:text-white text-blue-500">
-                    Start today for free with 100 credits!
+                    Start for free with 100 credits!
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500">
@@ -54,7 +54,7 @@ const PricingTable = () => {
                     Premium
                   </h3>
                   <p className="text-5xl font-bold text-center group-hover:text-white text-purple-500">
-                    $0.<span className="text-3xl">00</span>
+                    $3.<span className="text-3xl">95</span>
                   </p>
                   <p className="text-xs text-center uppercase group-hover:text-white text-purple-500">
                     monthly
@@ -64,7 +64,7 @@ const PricingTable = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-purple-500">
-                  <p className="text-xl text-white uppercase">Pay-As-You-Go</p>
+                  <p className="text-xl text-white">3 Months</p>
                   <button className="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
                     Save 15%
                   </button>
@@ -85,7 +85,7 @@ const PricingTable = () => {
                     monthly
                   </p>
                   <p className="text-sm text-center uppercase group-hover:text-white text-blue-500">
-                    100 credits and unlimited access!
+                    100 credits, premium access, and save!
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500">

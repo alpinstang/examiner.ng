@@ -3,7 +3,7 @@ import { LearningSVG } from "./svg/learning.svg";
 
 const Hero = () => {
   return (
-    <div className="gradient text-white p-8 mb-4">
+    <div className="gradient text-white md:px-8 md:mb-4">
       <div className="">
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">

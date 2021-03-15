@@ -11,8 +11,8 @@ const Exams = (props: any) => {
         title="Find Exams"
         description="Browse Exams offered and choose a practice test for free."
       />
-      <div className="container max-w-7xl mx-auto my-12">
-        <div className="md:flex content-center flex-wrap -mx-2 p-3 bg-grey rounded">
+      <div className="container mx-auto my-12">
+        <div className="md:flex content-center flex-wrap -mx-2 p-3 m-1">
           {props.exams.length &&
             props.exams.map((exam: any) => (
               <ExamCard key={exam.id} {...exam} />
@@ -41,7 +41,9 @@ export const getStaticProps: GetStaticProps = async () => {
       exams.push({
         id: doc.id,
         name: doc.data().name,
+        exam_full_name: doc.data().exam_full_name,
         added_on: dt,
+        image: doc.data().main_image,
         description: doc.data().description,
       });
     });

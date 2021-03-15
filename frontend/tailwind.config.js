@@ -13,6 +13,9 @@ module.exports = {
       full: "100%",
     },
     extend: {
+      borderRadius: {
+        super: "4rem",
+      },
       height: {
         half: "50vh",
       },
