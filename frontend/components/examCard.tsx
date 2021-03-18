@@ -14,6 +14,8 @@ import { truncateString } from "../lib/truncateString";
 const ExamCard = (props: any) => {
   const { name, description, image, exam_full_name, color, id } = props;
   const [url, setUrl] = useState("");
+  const [newColor, setColor] = useState(color);
+
   console.log(color);
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const ExamCard = (props: any) => {
       var pathReference = storage.ref(image);
       await pathReference.getDownloadURL().then((url) => {
         setUrl(url);
+        setColor(color);
       });
     };
 
@@ -33,7 +36,7 @@ const ExamCard = (props: any) => {
       <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-100 p-2">
         <label
           aria-label={name + " - " + id}
-          className={`flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-${color} cursor-pointer hover:shadow-2xl border border-gray-400`}
+          className={`flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-${newColor} cursor-pointer hover:shadow-2xl border border-gray-400`}
         >
           <div
             className="w-full rounded-tl-super rounded-tr-super bg-cover bg-center card-section-1"
@@ -58,7 +61,7 @@ const ExamCard = (props: any) => {
             </div>
           </div>
           <div
-            className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-${color} pt-6 pb-9 px-3`}
+            className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-${newColor} pt-6 pb-9 px-3`}
           >
             <div className="text-xl text-white">
               <div className="w-100">
