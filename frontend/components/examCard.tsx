@@ -61,6 +61,7 @@ const ExamCard = (props: any) => {
             </div>
           </div>
           <div
+            style={{ backgroundColor: newColor.replace('bright-', '') }}
             className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-${newColor} pt-6 pb-9 px-3`}
           >
             <div className="text-xl text-white">

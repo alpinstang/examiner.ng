@@ -21,12 +21,12 @@ module.exports = {
       },
       colors: {
         gold: "#FFD700",
-        brightred: "#e74c3c",
-        brightorange: "#fb8604",
-        brightgreen: "#2ecc71",
-        brightblue: "#1b7fff",
-        brightpurple: "#9b59b6",
-        brightturquoise: "#00badb",
+        "bright-red": "#e74c3c",
+        "bright-orange": "#fb8604",
+        "bright-green": "#2ecc71",
+        "bright-blue": "#1b7fff",
+        "bright-purple": "#9b59b6",
+        "bright-turquoise": "#00badb",
         nigeria: "#00844a",
         examiner: {
           50: "#EFFAF1ff",

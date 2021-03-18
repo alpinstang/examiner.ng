@@ -15,28 +15,21 @@ const Exams = (props: any) => {
     console.log("value", value);
     switch (value) {
       case 1:
-        color = "brightblue";
-        break;
+        return "bright-blue";
       case 2:
-        color = "brightgreen";
-        break;
+        return "bright-green";
       case 3:
-        color = "brightred";
-        break;
+        return "bright-red";
       case 4:
-        color = "brightpurple";
-        break;
+        return "bright-purple";
       case 5:
-        color = "brightorange";
-        break;
+        return "bright-orange";
       case 6:
         color = "brightturquoise";
         break;
       default:
-        color = "brightblue";
+        return "bright-blue";
     }
-
-    return color;
   };
 
   return (
