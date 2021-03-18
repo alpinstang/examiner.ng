@@ -30,6 +30,7 @@ const Exams = (props: any) => {
       default:
         return "bright-blue";
     }
+    return "bright-green";
   };
 
   return (
