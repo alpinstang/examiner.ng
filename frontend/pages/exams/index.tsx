@@ -10,7 +10,6 @@ const Exams = (props: any) => {
   };
 
   const randomColor = () => {
-    let color: string = "";
     let value = randomNumber(1, 6);
     console.log("value", value);
     switch (value) {
