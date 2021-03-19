@@ -24,7 +24,7 @@ const Exams = (props: any) => {
       case 5:
         return "bright-orange";
       case 6:
-        color = "brightturquoise";
+        return "brightturquoise";
         break;
       default:
         return "bright-blue";
