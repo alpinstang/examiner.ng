@@ -1,10 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manjari:wght@100;400;700&family=Roboto&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manjari", "Roboto", sans-serif;
+}
 
 .gradient {
-  background: #1b4332ff;
-  background: linear-gradient(90deg, #081c15ff 20%, #74c69dff 100%);
+  background: rgb(52, 168, 120);
+  background: linear-gradient(
+    45deg,
+    rgb(60, 184, 132) 20%,
+    rgb(52, 168, 120) 100%
+  );
 }
 
 .gradient-radial {
@@ -16,9 +29,19 @@
   background: #1b4332ff;
   background: linear-gradient(
     90deg,
-    #081c15ff 0%,
-    #74c69dff 50%,
-    #081c15ff 100%
+    rgb(52, 168, 120) 0%,
+    rgb(152, 238, 195) 50%,
+    rgb(52, 168, 120) 100%
+  );
+}
+
+.gradient-lr {
+  background: rgb(47, 114, 86);
+  background: linear-gradient(
+    120deg,
+    rgb(52, 168, 120) 0%,
+    rgb(105, 189, 147) 50%,
+    rgb(90, 187, 153) 100%
   );
 }
 
@@ -62,4 +85,60 @@
   li:nth-child(3)
   .carousel-bullet {
   color: #2d6a4fff; /*Set to match the Tailwind colour you want the active one to be */
+}
+
+.blog-list {
+  line-height: 1.5em;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1.12em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.75em;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+ul {
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
 }

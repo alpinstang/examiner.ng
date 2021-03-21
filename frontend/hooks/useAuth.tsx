@@ -108,6 +108,35 @@ const useAuthProvider = () => {
       });
   };
 
+  const optionsList: Array<any> = [];
+  const [exams, setExams]: any = useState(null);
+
+  const getExams = async () => {
+    try {
+      const data = await db.collection("exams").get();
+      data.docs.forEach(async (entry) => {
+        let id = entry.id;
+        const docRef = db.collection("exams").doc(id);
+        const doc = await docRef.get();
+        if (!doc.exists) {
+          console.log("No Document!");
+        } else {
+          //console.log("Document data:", doc.data());
+          let composed = {
+            id: id,
+            data: doc.data(),
+          };
+          optionsList.push(composed);
+          setExams([...optionsList]);
+          //return res;
+        }
+      });
+      return exams;
+    } catch (error) {
+      return { error };
+    }
+  };
+
   const updateUserData = (user: firebase.default.User) => {
     return db
       .collection("users")
@@ -141,5 +170,6 @@ const useAuthProvider = () => {
     signIn,
     getUserAdditionalData,
     updateUserData,
+    getExams,
   };
 };

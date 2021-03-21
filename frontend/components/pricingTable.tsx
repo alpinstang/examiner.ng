@@ -4,201 +4,97 @@ import TitleBar from "./titleBar";
 const PricingTable = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-half p-10 pt-3 text-gray-700 bg-gray-100 md:p-20 md:pt-10">
-        <TitleBar>Flexible Options</TitleBar>
-        <div className="flex flex-wrap items-center justify-center w-full max-w-4xl mt-8">
-          <div className="flex flex-col flex-grow mt-8 overflow-hidden bg-white rounded-lg shadow-lg">
-            <div className="flex flex-col items-center p-10 bg-gray-200">
-              <span className="font-semibold">Padawan</span>
-              <div className="flex items-center">
-                <span className="text-3xl">$</span>
-                <span className="text-5xl font-bold">20</span>
-                <span className="text-2xl text-gray-500">/mo</span>
-              </div>
+      <div className="container flex flex-wrap pt-4 pb-10 m-auto mt-6 md:mt-15 lg:px-12 xl:px-16">
+        <div className="w-full px-0 lg:px-4">
+          <TitleBar>
+            <span className="text-3xl lg:text-5xl">Choose Your Plan</span>
+          </TitleBar>
+          <p className="py-1 text-sm text-center text-blue-700 mb-10">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout.
+          </p>
+          <div className="flex flex-wrap items-center justify-center py-4 pt-0">
+            <div className="w-full p-4 md:w-1/2 lg:w-1/4 plan-card">
+              <label className="flex flex-col rounded-lg shadow-lg group relative hover:bg-blue-500 cursor-pointer hover:shadow-2xl">
+                <div className="w-full px-4 py-6 rounded-t-lg card-section-1">
+                  <h3 className="mx-auto text-base font-semibold text-center underline text-blue-500 group-hover:text-white">
+                    Free
+                  </h3>
+                  <p className="text-5xl font-bold text-center group-hover:text-white text-blue-500">
+                    $0.<span className="text-3xl">00</span>
+                  </p>
+                  <p className="text-xs text-center uppercase group-hover:text-white text-blue-500">
+                    monthly
+                  </p>
+                  <p className="text-sm text-center uppercase group-hover:text-white text-blue-500">
+                    Start for free with 100 credits!
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500">
+                  <p className="text-xl text-white uppercase">Pay-As-You-Go</p>
+                  <button className="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
+                    Get Started
+                  </button>
+                </div>
+              </label>
             </div>
-            <div className="p-10">
-              <ul>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Lightsaber</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Robe</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Insurance</span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex px-10 pb-10 justfy-center">
-              <button className="flex items-center justify-center w-full h-12 px-6 text-sm uppercase bg-gray-200 rounded-lg">
-                Join now
-              </button>
-            </div>
-          </div>
 
-          <div className="z-10 flex flex-col flex-grow mt-8 overflow-hidden transform bg-white rounded-lg shadow-lg md:scale-110">
-            <div className="flex flex-col items-center p-10 bg-gray-200">
-              <span className="font-semibold">Jedi Knight</span>
-              <div className="flex items-center">
-                <span className="text-3xl">$</span>
-                <span className="text-6xl font-bold">50</span>
-                <span className="text-2xl text-gray-500">/mo</span>
-              </div>
+            <div className="w-full p-4 md:w-1/2 lg:w-1/4 plan-card">
+              <label className="flex flex-col rounded-lg shadow-lg group relative hover:bg-purple-500 cursor-pointer hover:shadow-2xl">
+                <div className="w-full px-4 py-6 rounded-t-lg card-section-1">
+                  <div className="w-auto absolute rounded-lg shadow-lg bg-gold p-2 -top-7 right-8">
+                    <span className="text-sm font-bold text-black">
+                      Most Popular
+                      <span className="absolute left-0 -bottom-6 text-lg text-gold">
+                        ▼
+                      </span>
+                    </span>
+                  </div>
+                  <h3 className="mx-auto text-base font-semibold text-center underline text-purple-500 group-hover:text-white">
+                    Premium
+                  </h3>
+                  <p className="text-5xl font-bold text-center group-hover:text-white text-purple-500">
+                    $3.<span className="text-3xl">95</span>
+                  </p>
+                  <p className="text-xs text-center uppercase group-hover:text-white text-purple-500">
+                    monthly
+                  </p>
+                  <p className="text-sm text-center uppercase group-hover:text-white text-purple-500">
+                    Get 100 credits and premium access!
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-purple-500">
+                  <p className="text-xl text-white">3 Months</p>
+                  <button className="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
+                    Save 15%
+                  </button>
+                </div>
+              </label>
             </div>
-            <div className="p-10">
-              <ul>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2 italic">Padawan +</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Solo missions</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Utility belt</span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex px-10 pb-10 justfy-center">
-              <button className="flex items-center justify-center w-full h-12 px-6 text-sm uppercase bg-gray-200 rounded-lg">
-                Join now
-              </button>
-            </div>
-          </div>
 
-          <div className="flex flex-col flex-grow overflow-hidden bg-white rounded-lg shadow-lg mt-19">
-            <div className="flex flex-col items-center p-10 bg-gray-200">
-              <span className="font-semibold">Jedi Master</span>
-              <div className="flex items-center">
-                <span className="text-3xl">$</span>
-                <span className="text-5xl font-bold">99</span>
-                <span className="text-2xl text-gray-500">/mo</span>
-              </div>
-            </div>
-            <div className="p-10">
-              <ul>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2 italic">Jedi Knight +</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Sit on council</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-green-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span className="ml-2">Stock options</span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex px-10 pb-10 justfy-center">
-              <button className="flex items-center justify-center w-full h-12 px-6 text-sm uppercase bg-gray-200 rounded-lg">
-                Join now
-              </button>
+            <div className="w-full p-4 md:w-1/2 lg:w-1/4 plan-card">
+              <label className="flex flex-col rounded-lg shadow-lg group card-group relative hover:bg-blue-500 cursor-pointer hover:shadow-2xl">
+                <div className="w-full px-4 py-6 rounded-t-lg card-section-1">
+                  <h3 className="mx-auto text-base font-semibold text-center underline text-blue-500 group-hover:text-white">
+                    Elite
+                  </h3>
+                  <p className="text-5xl font-bold text-center group-hover:text-white text-blue-500">
+                    $2.<span className="text-3xl">50</span>
+                  </p>
+                  <p className="text-xs text-center uppercase group-hover:text-white text-blue-500">
+                    monthly
+                  </p>
+                  <p className="text-sm text-center uppercase group-hover:text-white text-blue-500">
+                    100 credits, premium access, and save!
+                  </p>
+                </div>
+                <div className="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-blue-500">
+                  <p className="text-xl text-white">6 months</p>
+                  <button className="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-blue-500">
+                    Save 25%
+                  </button>
+                </div>
+              </label>
             </div>
           </div>
         </div>

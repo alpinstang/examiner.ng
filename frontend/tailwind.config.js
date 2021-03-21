@@ -1,7 +1,10 @@
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: "Manjari, Roboto, sans-serif",
+    },
     minWidth: {
       0: "0",
       "1/4": "25%",
@@ -10,10 +13,39 @@ module.exports = {
       full: "100%",
     },
     extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        "bounce-x": {
+          "0%, 20%, 40%, 60%, 80%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(-5px)" },
+        },
+        "bounce-x-reverse": {
+          "0%, 20%, 40%, 60%, 80%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(5px)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 1.5s ease-in-out infinite",
+        "bounce-x": "bounce-x 1.5s ease-in-out infinite",
+        "bounce-x-reverse": "bounce-x-reverse 1.5s ease-in-out infinite",
+      },
+      borderRadius: {
+        super: "4rem",
+      },
       height: {
         half: "50vh",
       },
       colors: {
+        gold: "#FFD700",
+        "bright-red": "#e74c3c",
+        "bright-orange": "#fb8604",
+        "bright-green": "#2ecc71",
+        "bright-blue": "#1b7fff",
+        "bright-purple": "#9b59b6",
+        "bright-turquoise": "#00badb",
         nigeria: "#00844a",
         examiner: {
           50: "#EFFAF1ff",
@@ -42,9 +74,87 @@ module.exports = {
         darkjunglegreen: "#081c15ff",
       },
     },
+    typography: (theme) => ({
+      light: {
+        css: [
+          {
+            color: theme("colors.gray.400"),
+            '[class~="lead"]': {
+              color: theme("colors.gray.300"),
+            },
+            '[class~="no-underline"]': {
+              textDecoration: "none",
+            },
+            '[class~="blog-link"]': {
+              color: "#40916cff",
+              textDecoration: "underline",
+            },
+            '[class~="blog-link:hover"]': {
+              color: "#52b788ff",
+              fontWeight: "bold",
+              textDecoration: "underline",
+            },
+            a: {
+              color: theme("colors.white"),
+            },
+            strong: {
+              color: theme("colors.white"),
+            },
+            "ol > li::before": {
+              color: theme("colors.gray.400"),
+            },
+            "ul > li::before": {
+              backgroundColor: theme("colors.gray.600"),
+            },
+            hr: {
+              borderColor: theme("colors.gray.200"),
+            },
+            blockquote: {
+              color: theme("colors.gray.200"),
+              borderLeftColor: theme("colors.gray.600"),
+            },
+            h1: {
+              color: theme("colors.white"),
+            },
+            h2: {
+              color: theme("colors.white"),
+            },
+            h3: {
+              color: theme("colors.white"),
+            },
+            h4: {
+              color: theme("colors.white"),
+            },
+            "figure figcaption": {
+              color: theme("colors.gray.400"),
+            },
+            code: {
+              color: theme("colors.white"),
+            },
+            "a code": {
+              color: theme("colors.white"),
+            },
+            pre: {
+              color: theme("colors.gray.200"),
+              backgroundColor: theme("colors.gray.800"),
+            },
+            thead: {
+              color: theme("colors.white"),
+              borderBottomColor: theme("colors.gray.400"),
+            },
+            "tbody tr": {
+              borderBottomColor: theme("colors.gray.600"),
+            },
+          },
+        ],
+      },
+    }),
   },
   variants: {
-    extend: {},
+    extend: {
+      fontFamily: ["hover", "focus"],
+      typography: ["dark"],
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

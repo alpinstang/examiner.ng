@@ -10,12 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Examiner Online Exam Preparation</title>
           <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
           <link
             rel="apple-touch-icon"
             sizes="57x57"
@@ -90,7 +85,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
-        <body className="leading-normal tracking-normal">
+        <body className="leading-normal tracking-normal font-sans">
           <Main />
           <NextScript />
         </body>

@@ -1,44 +1,122 @@
-const BlogPreview = () => {
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { truncateString } from "../lib/truncateString";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
+
+interface BlogProps {
+  name: string;
+  gold_text: string;
+  description: string;
+  tags: string;
+  images: Array<any>;
+  publish_date: string;
+  short_description: string;
+  id: string;
+}
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const BlogPreview = ({
+  name,
+  gold_text,
+  short_description,
+  publish_date,
+  images,
+}: BlogProps) => {
+  const getDate = (timestamp: any) => {
+    let date = new Date(timestamp);
+
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+
+    return day + " " + monthNames[month] + " " + year;
+  };
+
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    const getUrl = async () => {
+      let storage = firebase.storage();
+      var pathReference = storage.ref(images[0]);
+      await pathReference.getDownloadURL().then((url) => {
+        setUrl(url);
+      });
+    };
+
+    getUrl();
+  }, []);
+
   return (
-    <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-      <dl>
-        <dt className="sr-only">Published on</dt>
-        <dd className="text-base leading-6 font-medium text-gray-500">
-          <time dateTime="2021-02-16T16:05:00.000Z">Febuary 16, 2021</time>
-        </dd>
-      </dl>
-      <div className="space-y-5 xl:col-span-3">
-        <div className="space-y-6">
-          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-            <a
-              className="text-gray-900"
-              href="/tailwindcss-from-zero-to-production"
-            >
-              "Tailwind CSS: From Zero to Production" on YouTube
-            </a>
-          </h2>
-          <div className="prose max-w-none text-gray-500">
-            <p>
-              Today we're excited to release{" "}
-              <a href="https://www.youtube.com/watch?v=elgqxmdVms8&amp;list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0&amp;index=1">
-                Tailwind CSS: From Zero to Production
-              </a>
-              , a new screencast series that teaches you everything you need to
-              know to get up and running with Tailwind CSS v2.0 from scratch.
-            </p>
-          </div>
+    <div className="w-full lg:max-w-full lg:flex bg-gray-100 shadow-lg">
+      <div
+        className="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+        style={{ backgroundImage: `url(${url ? url : "/static/loading.gif"})` }}
+        title={name}
+      ></div>
+      <div className="border-r border-b border-l border-green-400 lg:border-l-0 lg:border-t lg:border-green-400 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div className="mb-8">
+          <p className="text-sm text-gray-600 flex items-center pb-2">
+            <span className="w-6 h-6 mr-2 -mt-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </span>
+            <time dateTime={publish_date}>{getDate(publish_date)}</time>
+          </p>
+          <div className="text-gray-900 font-bold text-2xl mb-2">{name}</div>
+          <p className="text-green-600 text-base">
+            {truncateString(gold_text, 140)}
+          </p>
+          <p className="text-gray-700 text-base">
+            {truncateString(short_description, 160)}
+          </p>
         </div>
-        <div className="text-base leading-6 font-medium">
-          <a
-            className="text-teal-500 hover:text-teal-600"
-            aria-label='Read ""Tailwind CSS: From Zero to Production" on YouTube"'
-            href="/tailwindcss-from-zero-to-production"
+        <div className="flex items-center">
+          <Link
+            href={{
+              pathname: `/blog/${encodeURI(name)}`,
+              query: {
+                name,
+              },
+            }}
           >
-            Read more
-          </a>
+            <a
+              className="blog-link text-xl underline text-green-600 font-bold"
+              aria-label="Read More"
+            >
+              Read more
+            </a>
+          </Link>
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 

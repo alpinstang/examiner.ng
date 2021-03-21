@@ -24,13 +24,15 @@ import {
 
 import { blogSchema } from "./schemas/blog/blogSchema";
 import { productSchema } from "./schemas/product/productsSchema";
-import { testEntitySchema } from "./schemas/testEntitySchema";
 import { localeSchema } from "./schemas/product/localeSchema";
 import { productAdditionalColumn } from "./schemas/product/productAdditionalColDelegate";
 import { usersSchema } from "./schemas/user/usersSchema";
 
 import { examSchema } from "./schemas/exam/examSchema";
-import { questionSchema } from "./schemas/exam/questionSchema";
+
+import { testSchema } from "./schemas/exam-test/testSchema";
+import { questionSchema } from "./schemas/exam-test/questionSchema";
+
 import { UploadQuestionsView } from "./FileUploadView";
 
 function App() {
@@ -51,18 +53,6 @@ function App() {
 
   productSchema.onDelete = (props) => {
     console.log("onDelete", props);
-  };
-
-  testEntitySchema.onPreSave = ({
-    schema,
-    collectionPath,
-    id,
-    values,
-    status,
-  }: EntitySaveProps<typeof testEntitySchema>) => {
-    console.log("custom onPreSave");
-    if (!values.empty_string) values.empty_string = "";
-    return values;
   };
 
   const productExtraActionBuilder = ({
@@ -114,9 +104,8 @@ function App() {
       "images",
       "status",
       "reviewed",
-      "products",
       "gold_text",
-      "long_text",
+      "short_description",
     ],
     filterableProperties: ["name", "status"],
     initialFilter: {
@@ -133,18 +122,34 @@ function App() {
     schema: questionSchema,
     defaultSize: "l",
   });
+
   const examCollection = buildCollection({
     relativePath: "exams",
     schema: examSchema,
     name: "Exams",
     group: "Testing",
-    subcollections: [questionCollection],
-    excludedProperties: ["images", "questions", "uppercase_name"],
+    excludedProperties: ["images", "questions"],
     filterableProperties: ["price", "category"],
+  });
+
+  const testCollection = buildCollection({
+    relativePath: "tests",
+    schema: testSchema,
+    name: "Tests",
+    group: "Testing",
+    subcollections: [questionCollection],
+    excludedProperties: [
+      "images",
+      "questions_list",
+      "questions_count",
+      "duration",
+    ],
+    filterableProperties: ["price"],
   });
 
   const navigation: EntityCollection[] = [
     examCollection,
+    testCollection,
     productsCollection,
     usersCollection,
     blogCollection,
@@ -163,7 +168,8 @@ function App() {
     // Check if the user is someone we want to manage CMS
     if (
       user?.email === "jcm.codes@gmail.com" ||
-      user?.email === "ileolagold.olalekan@gmail.com"
+      user?.email === "ileolagold.olalekan@gmail.com" ||
+      user?.email === "ajibawoolusola@gmail.com"
     ) {
       console.log("Allowing access to ", user?.email);
       return true;

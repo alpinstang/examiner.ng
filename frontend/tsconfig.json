@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es6", "dom", "dom.iterable", "esnext"],
+    "strictNullChecks": true,
     "allowJs": true,
-    // "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
@@ -19,8 +19,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "typings"]
 }
