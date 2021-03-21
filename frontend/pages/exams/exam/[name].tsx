@@ -2,17 +2,21 @@
 // OF AN EXAM TYPE COLLECTION
 
 import { GetStaticProps } from "next";
+import React from "react";
 import { firebase } from "../../../config/firebase";
+import TestCardList from "../../../components/testCardList";
+import CallToAction from "../../../components/callToAction";
 
 const Tests = (props: any) => {
   console.log(props);
-
+  const { tests } = props;
   return (
-    <div>
-      <h1>Subjects</h1>
-      Tests List Page - Specific tests of an exam type <p>test</p>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
-    </div>
+    <>
+      <br />
+      <TestCardList tests={tests} />
+      <br />
+      <CallToAction />
+    </>
   );
 };
 
