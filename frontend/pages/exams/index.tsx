@@ -10,19 +10,42 @@ import { ArrowRight } from "../../components/svg/arrowRight.svg";
 const Exams = (props: any) => {
   const [scrolling, setScrolling] = useState(false);
 
-  const doScroll = (e: any, hover: any) => {
-    console.log(scrolling, e);
-    let scrollInterval;
-    let element: any;
-    element = document.getElementById("scrollable");
-    if (hover) {
-      setScrolling(true);
-      element.scrollLeft += 100;
-      return;
-    } else {
-      element.scrollLeft = element.scrollLeft;
-      clearInterval(scrollInterval);
-      setScrolling(false);
+  const ScrollLeft = () => {
+    let container: HTMLElement | null;
+    container = document.getElementById("scrollable");
+    let scrollAmount = 0;
+    var slideTimer = setInterval(function () {
+      if (container) {
+        container.scrollLeft += 10;
+        scrollAmount += 10;
+        if (scrollAmount >= 320) {
+          window.clearInterval(slideTimer);
+        }
+      }
+    }, 25);
+  };
+
+  const ScrollRight = () => {
+    let container: HTMLElement | null;
+    container = document.getElementById("scrollable");
+    let scrollAmount = 0;
+    var slideTimer = setInterval(function () {
+      if (container) {
+        container.scrollLeft += 10;
+        scrollAmount += 10;
+        if (scrollAmount >= 320) {
+          window.clearInterval(slideTimer);
+        }
+      }
+    }, 25);
+  };
+
+  const doScroll = (e: any) => {
+    if (e.target.id === "left") {
+      ScrollLeft();
+    }
+    if (e.target.id === "right") {
+      ScrollRight();
     }
   };
 
@@ -43,12 +66,12 @@ const Exams = (props: any) => {
           available.
         </h3>
       </div>
-      <div className="relative group">
+      <div className="relative group container mx-auto">
         <div
           id="scrollable"
           className="relative flex overflow-x-scroll py-10 hide-scroll-bar"
         >
-          <div className="flex flex-nowrap lg:ml-20 md:ml-21 ml-10 ">
+          <div className="flex flex-nowrap lg:mx-20 md:mx-10 mx-5">
             {props.exams.length &&
               props.exams.map((exam: any) => {
                 return (
@@ -63,37 +86,23 @@ const Exams = (props: any) => {
         </div>
         <div
           id="left"
-          onClick={(e) => doScroll(e, true)}
-          onMouseEnter={(e) => doScroll(e, true)}
-          onMouseLeave={(e) => doScroll(e, false)}
-          className="absolute top-0 w-36 border-2 h-full border-black group-hover:opacity-100 opacity-40 transition delay-150 duration-300 ease-in-out"
+          onClick={(e) => doScroll(e)}
+          className="bg-gradient-to-r from-white to-transparent absolute top-0 w-16 border-2 h-full border-black"
         >
-          <div className="relative top-1/2 -mt-7 w-12 h-12">{ArrowLeft}</div>
+          <div className="relative animate-bounce-x top-1/2 -mt-7 w-16 h-16 group-hover:opacity-100 md:opacity-30 transition delay-150 duration-300 ease-in-out">
+            {ArrowLeft}
+          </div>
         </div>
         <div
           id="right"
-          onClick={(e) => doScroll(e, true)}
-          onMouseEnter={(e) => doScroll(e, true)}
-          onMouseLeave={(e) => doScroll(e, false)}
-          className="absolute top-0 right-0 w-36 border-2 h-full border-black group-hover:opacity-100 opacity-40 transition delay-150 duration-300 ease-in-out"
+          onClick={(e) => doScroll(e)}
+          className="bg-gradient-to-r from-transparent to-white absolute top-0 right-0 w-16 border-2 h-full border-black"
         >
-          <div className="relative float-right top-1/2 -mt-7 w-12 h-12">
+          <div className="relative animate-bounce-x-reverse float-right top-1/2 -mt-7 w-16 h-16 group-hover:opacity-100 md:opacity-30 transition delay-150 duration-300 ease-in-out">
             {ArrowRight}
           </div>
         </div>
       </div>
-
-      {/* <div className="flex flex-wrap ">
-        {props.exams.length &&
-          props.exams.map((exam: any) => {
-            let color = randomColor();
-            return (
-              <div className="p-2 w-full sm:w-1/2 md:w-1/3 xl:w-1/6 mb-4">
-                <ExamCard key={exam.id} color={color} {...exam} />
-              </div>
-            );
-          })}
-      </div> */}
 
       <div className="container mx-auto my-12">
         <section className="prose">

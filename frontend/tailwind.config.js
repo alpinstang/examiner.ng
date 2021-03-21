@@ -13,6 +13,25 @@ module.exports = {
       full: "100%",
     },
     extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        "bounce-x": {
+          "0%, 20%, 40%, 60%, 80%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(-5px)" },
+        },
+        "bounce-x-reverse": {
+          "0%, 20%, 40%, 60%, 80%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(5px)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 1.5s ease-in-out infinite",
+        "bounce-x": "bounce-x 1.5s ease-in-out infinite",
+        "bounce-x-reverse": "bounce-x-reverse 1.5s ease-in-out infinite",
+      },
       borderRadius: {
         super: "4rem",
       },

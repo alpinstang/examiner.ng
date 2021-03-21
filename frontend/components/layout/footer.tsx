@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white z-50 relative text-center md:text-left">
+      <footer className="bg-white z-50 relative text-center md:text-left w-full">
         <div className="container mx-auto px-8 bg-white">
           <div className="w-full flex flex-col md:flex-row md:py-6">
             <div className="flex-1 mb-2 md:mb-6 text-black">
@@ -141,7 +141,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-examiner-700 text-white">
+        <div className="bg-examiner-700 text-white w-full">
           <div className="container mx-auto text-center py-4 mt-4">
             <p>&copy; {currentYear} Examiner.ng | All Rights Reserved</p>
           </div>
