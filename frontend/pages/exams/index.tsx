@@ -1,5 +1,5 @@
 import ExamCard from "../../components/examCard";
-import React, { useState } from "react";
+import React from "react";
 import { firebase } from "../../config/firebase";
 import { NextSeo } from "next-seo";
 import { GetStaticProps } from "next";
@@ -8,8 +8,6 @@ import { ArrowLeft } from "../../components/svg/arrowLeft.svg";
 import { ArrowRight } from "../../components/svg/arrowRight.svg";
 
 const Exams = (props: any) => {
-  const [scrolling, setScrolling] = useState(false);
-
   const ScrollLeft = () => {
     let container: HTMLElement | null;
     container = document.getElementById("scrollable");
