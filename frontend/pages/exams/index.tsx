@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import { GetStaticProps } from "next";
 import TitleBar from "../../components/titleBar";
 import { ArrowLeft } from "../../components/svg/arrowLeft.svg";
+import { ArrowRight } from "../../components/svg/arrowRight.svg";
 
 const Exams = (props: any) => {
   const [scrolling, setScrolling] = useState(false);
@@ -62,11 +63,23 @@ const Exams = (props: any) => {
         </div>
         <div
           id="left"
+          onClick={(e) => doScroll(e, true)}
           onMouseEnter={(e) => doScroll(e, true)}
           onMouseLeave={(e) => doScroll(e, false)}
           className="absolute top-0 w-36 border-2 h-full border-black group-hover:opacity-100 opacity-40 transition delay-150 duration-300 ease-in-out"
         >
           <div className="relative top-1/2 -mt-7 w-12 h-12">{ArrowLeft}</div>
+        </div>
+        <div
+          id="right"
+          onClick={(e) => doScroll(e, true)}
+          onMouseEnter={(e) => doScroll(e, true)}
+          onMouseLeave={(e) => doScroll(e, false)}
+          className="absolute top-0 right-0 w-36 border-2 h-full border-black group-hover:opacity-100 opacity-40 transition delay-150 duration-300 ease-in-out"
+        >
+          <div className="relative float-right top-1/2 -mt-7 w-12 h-12">
+            {ArrowRight}
+          </div>
         </div>
       </div>
 
