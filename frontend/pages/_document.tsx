@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { DefaultSeo } from "next-seo";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
@@ -86,6 +87,29 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff"></meta>
         </Head>
         <body className="leading-normal tracking-normal font-sans">
+          <DefaultSeo
+            openGraph={{
+              type: "website",
+              locale: "en_US",
+              url: "https://www.url.ie/",
+              site_name: "Examiner Test Preparation for Students",
+              description:
+                "Examiner gives Nigerian students access to the best in computer assisted learning.",
+              images: [
+                {
+                  url: "/static/classes-1.jpg",
+                  width: 800,
+                  height: 600,
+                  alt: "Og Image Alt",
+                },
+              ],
+            }}
+            twitter={{
+              handle: "@jmcdonald91",
+              site: "@examinerNG",
+              cardType: "summary_large_image",
+            }}
+          />
           <Main />
           <NextScript />
         </body>
