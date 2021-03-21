@@ -13,8 +13,14 @@ const Carousel: React.FC = () => {
           defaultChecked={true}
         />
         <div className="carousel-item absolute opacity-0 h-half">
-          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
-            Slide 1
+          <div
+            style={{
+              backgroundImage: "url('/static/bece-card.png')",
+              backgroundSize: "cover",
+            }}
+            className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12"
+          >
+            Study Cards
           </div>
         </div>
         <label
@@ -41,8 +47,14 @@ const Carousel: React.FC = () => {
           defaultChecked={true}
         />
         <div className="carousel-item absolute opacity-0 h-half">
-          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
-            Slide 2
+          <div
+            style={{
+              backgroundImage: "url('/static/classes.jpg')",
+              backgroundSize: "cover",
+            }}
+            className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12"
+          >
+            Study Cards
           </div>
         </div>
         <label
@@ -69,8 +81,14 @@ const Carousel: React.FC = () => {
           defaultChecked={true}
         />
         <div className="carousel-item absolute opacity-0 h-half">
-          <div className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12">
-            Slide 3
+          <div
+            style={{
+              backgroundImage: "url('/static/classes-1.jpg')",
+              backgroundSize: "cover",
+            }}
+            className="block h-full w-full bg-green-500 text-white text-5xl text-center pt-12"
+          >
+            Other Tools
           </div>
         </div>
         <label
