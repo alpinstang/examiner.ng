@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   let exam: any = {};
   let tests: any = [];
   let testArray: any = [];
+  console.log(params);
   const docRef = firebase
     .firestore()
     .collection("exams")

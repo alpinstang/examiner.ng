@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Manjari:wght@100;400;700&family=Roboto&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Manjari", "Roboto", sans-serif;
 }
@@ -129,4 +133,12 @@ blockquote p {
 ul {
   list-style-position: inside;
   list-style-type: circle;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
 }

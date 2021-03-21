@@ -12,13 +12,37 @@ import { truncateString } from "../lib/truncateString";
 // }
 
 const ExamCard = (props: any) => {
-  const { name, description, image, exam_full_name, color, id } = props;
+  const { name, description, image, exam_full_name, id } = props;
   const [url, setUrl] = useState("");
-  const [newColor, setColor] = useState(color);
+  const [newColor, setColor] = useState("");
 
-  console.log(color);
+  const randomNumber = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
+  const randomColor = () => {
+    let value = randomNumber(1, 6);
+    switch (value) {
+      case 1:
+        return "bright-blue";
+      case 2:
+        return "bright-green";
+      case 3:
+        return "bright-red";
+      case 4:
+        return "bright-purple";
+      case 5:
+        return "bright-orange";
+      case 6:
+        return "brightturquoise";
+      default:
+        return "bright-blue";
+    }
+    return "bright-green";
+  };
 
   useEffect(() => {
+    let color = randomColor();
     const getUrl = async () => {
       let storage = firebase.storage();
       var pathReference = storage.ref(image);
@@ -33,10 +57,11 @@ const ExamCard = (props: any) => {
 
   return (
     <>
-      <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-100 p-2">
+      <div className="w-full">
         <label
+          style={{ border: `2px solid ${newColor.replace("bright-", "")}` }}
           aria-label={name + " - " + id}
-          className={`flex flex-col h-100 rounded-super shadow-lg group relative hover:bg-${newColor} cursor-pointer hover:shadow-2xl border border-gray-400`}
+          className={`flex flex-col h-100 rounded-super shadow-lg group relative cursor-pointer hover:shadow-2xl border border-gray-400`}
         >
           <div
             className="w-full rounded-tl-super rounded-tr-super bg-cover bg-center card-section-1"
@@ -61,8 +86,8 @@ const ExamCard = (props: any) => {
             </div>
           </div>
           <div
-            style={{ backgroundColor: newColor.replace('bright-', '') }}
-            className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-${newColor} pt-6 pb-9 px-3`}
+            style={{ border: `2px solid ${newColor.replace("bright-", "")}` }}
+            className={`flex flex-col items-center justify-center w-full h-full rounded-b-super bg-gray-100 pt-6 pb-9 px-3`}
           >
             <div className="text-xl text-white">
               <div className="w-100">
@@ -73,9 +98,9 @@ const ExamCard = (props: any) => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path fill="#030303" d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
-                      fill="#fff"
+                      fill="#030303"
                       d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
                     />
                     <path
@@ -86,7 +111,7 @@ const ExamCard = (props: any) => {
                     />
                   </svg>
                 </div>
-                <div className="inline text-white">12 Subjects</div>
+                <div className="inline text-black">12 Subjects</div>
               </div>
               <div className="w-full">
                 <div className="inline-block w-6 h-auto">
@@ -96,9 +121,9 @@ const ExamCard = (props: any) => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path fill="#030303" d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
-                      fill="#fff"
+                      fill="#030303"
                       d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
                     />
                     <path
@@ -109,7 +134,7 @@ const ExamCard = (props: any) => {
                     />
                   </svg>
                 </div>
-                <div className="inline text-white">16345 Attempts</div>
+                <div className="inline text-black">16345 Attempts</div>
               </div>
 
               <div className="w-full">
@@ -120,9 +145,9 @@ const ExamCard = (props: any) => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path fill="#030303" d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path
-                      fill="#fff"
+                      fill="#030303"
                       d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
                     />
                     <path
@@ -133,19 +158,24 @@ const ExamCard = (props: any) => {
                     />
                   </svg>
                 </div>
-                <div className="inline text-white">5 years</div>
+                <div className="inline text-black">5 years</div>
               </div>
             </div>
             <Link
               href={{
-                pathname: `/exam/${encodeURI(name)}`,
+                pathname: `/exams/exam/${encodeURI(name)}`,
                 query: {
                   name,
                   id,
                 },
               }}
             >
-              <button className="w-5/6 py-2 pt-4 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded-xl text-blue-500">
+              <button
+                style={{
+                  backgroundColor: `${newColor.replace("bright-", "")}`,
+                }}
+                className="w-5/6 py-2 pt-4 mt-2 font-semibold text-xl text-center uppercase border border-transparent rounded-xl text-white"
+              >
                 View {name}
               </button>
             </Link>

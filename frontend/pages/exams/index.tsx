@@ -1,35 +1,28 @@
 import ExamCard from "../../components/examCard";
-import React from "react";
+import React, { useState } from "react";
 import { firebase } from "../../config/firebase";
 import { NextSeo } from "next-seo";
 import { GetStaticProps } from "next";
+import TitleBar from "../../components/titleBar";
+import { ArrowLeft } from "../../components/svg/arrowLeft.svg";
 
 const Exams = (props: any) => {
-  const randomNumber = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
+  const [scrolling, setScrolling] = useState(false);
 
-  const randomColor = () => {
-    let value = randomNumber(1, 6);
-    console.log("value", value);
-    switch (value) {
-      case 1:
-        return "bright-blue";
-      case 2:
-        return "bright-green";
-      case 3:
-        return "bright-red";
-      case 4:
-        return "bright-purple";
-      case 5:
-        return "bright-orange";
-      case 6:
-        return "brightturquoise";
-        break;
-      default:
-        return "bright-blue";
+  const doScroll = (e: any, hover: any) => {
+    console.log(scrolling, e);
+    let scrollInterval;
+    let element: any;
+    element = document.getElementById("scrollable");
+    if (hover) {
+      setScrolling(true);
+      element.scrollLeft += 100;
+      return;
+    } else {
+      element.scrollLeft = element.scrollLeft;
+      clearInterval(scrollInterval);
+      setScrolling(false);
     }
-    return "bright-green";
   };
 
   return (
@@ -38,16 +31,60 @@ const Exams = (props: any) => {
         title="Find Exams"
         description="Browse Exams offered and choose a practice test for free."
       />
-      <div className="container mx-auto my-12">
-        <div className="md:flex content-center flex-wrap -mx-2 p-3 m-1">
-          {props.exams.length &&
-            props.exams.map((exam: any) => {
-              let color = randomColor();
-              return <ExamCard key={exam.id} color={color} {...exam} />;
-            })}
+
+      <div className="md:pt-10 max-w-xl mx-auto">
+        <TitleBar>
+          <span>Exams</span>
+        </TitleBar>
+        <h3 className="text-center">
+          Find our list of real exams for you to practice. We are constantly
+          updating our questions database to give you the latest information
+          available.
+        </h3>
+      </div>
+      <div className="relative group">
+        <div
+          id="scrollable"
+          className="relative flex overflow-x-scroll py-10 hide-scroll-bar"
+        >
+          <div className="flex flex-nowrap lg:ml-20 md:ml-21 ml-10 ">
+            {props.exams.length &&
+              props.exams.map((exam: any) => {
+                return (
+                  <div className="inline-block px-3">
+                    <div className="w-96 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                      <ExamCard key={exam.id} {...exam} />
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
         </div>
-        <section className="prose container max-w-7xl mx-auto">
-          <div className="flex divide divide-transparent mb-12">
+        <div
+          id="left"
+          onMouseEnter={(e) => doScroll(e, true)}
+          onMouseLeave={(e) => doScroll(e, false)}
+          className="absolute top-0 w-36 border-2 h-full border-black group-hover:opacity-100 opacity-40 transition delay-150 duration-300 ease-in-out"
+        >
+          <div className="relative top-1/2 -mt-7 w-12 h-12">{ArrowLeft}</div>
+        </div>
+      </div>
+
+      {/* <div className="flex flex-wrap ">
+        {props.exams.length &&
+          props.exams.map((exam: any) => {
+            let color = randomColor();
+            return (
+              <div className="p-2 w-full sm:w-1/2 md:w-1/3 xl:w-1/6 mb-4">
+                <ExamCard key={exam.id} color={color} {...exam} />
+              </div>
+            );
+          })}
+      </div> */}
+
+      <div className="container mx-auto my-12">
+        <section className="prose">
+          <div className="mb-12 text-center text-xl text-red-500">
             {props.error && <div>There was an error fetching the data.</div>}
           </div>
         </section>
@@ -76,7 +113,10 @@ export const getStaticProps: GetStaticProps = async () => {
       });
     });
   } catch (err) {
-    error = err;
+    error = {
+      error: error,
+    };
+    console.log(error);
   }
 
   return {
