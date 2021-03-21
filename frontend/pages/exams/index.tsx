@@ -85,7 +85,7 @@ const Exams = (props: any) => {
         <div
           id="left"
           onClick={(e) => doScroll(e)}
-          className="bg-gradient-to-r from-white to-transparent absolute top-0 w-16 border-2 h-full border-black"
+          className="bg-gradient-to-r from-white to-transparent absolute top-0 w-16 h-full"
         >
           <div className="relative animate-bounce-x top-1/2 -mt-7 w-16 h-16 group-hover:opacity-100 md:opacity-30 transition delay-150 duration-300 ease-in-out">
             {ArrowLeft}
@@ -94,7 +94,7 @@ const Exams = (props: any) => {
         <div
           id="right"
           onClick={(e) => doScroll(e)}
-          className="bg-gradient-to-r from-transparent to-white absolute top-0 right-0 w-16 border-2 h-full border-black"
+          className="bg-gradient-to-r from-transparent to-white absolute top-0 right-0 w-16 h-full"
         >
           <div className="relative animate-bounce-x-reverse float-right top-1/2 -mt-7 w-16 h-16 group-hover:opacity-100 md:opacity-30 transition delay-150 duration-300 ease-in-out">
             {ArrowRight}
